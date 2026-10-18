@@ -147,3 +147,20 @@ test("excludedHacks surfaces .il, .er and brand .dev with reasons, not silence",
   assert.ok(!excludedHacks("delicious", meta, false).some((x) => x.tld === "us"),
     ".us is suggestible — never excluded");
 });
+
+test("file-extension clash is a ranking penalty, not an exclusion (spec 12.5.1 #6)", () => {
+  const meta = new Map([
+    ["py", { registrablePublicly: true, restriction: "none", restrictionVerified: true, fileExtSeverity: "high" as const }],
+    ["in", { registrablePublicly: true, restriction: "none", restrictionVerified: true, fileExtSeverity: null }],
+  ]);
+  const ranked = rankCandidates(
+    [
+      { fqdn: "monty.py", tld: "py", dotCount: 1 } as never,
+      { fqdn: "monty.in", tld: "in", dotCount: 1 } as never,
+    ],
+    meta
+  );
+  // monty.py reads as a python file: the clash ending ranks below the clean one
+  assert.equal(ranked[0].fqdn, "monty.in");
+  assert.equal(ranked[1].fqdn, "monty.py");
+});

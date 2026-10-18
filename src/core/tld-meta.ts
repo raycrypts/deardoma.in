@@ -33,6 +33,12 @@ export interface TldMeta {
   // (e.g. .il only offers co.il, org.il...) — hacks under them are impossible
   secondLevelRegistrable?: boolean | null; // null = unchecked
   thirdLevelNamespaces?: string[] | null;
+  // file-extension clash (spec 12.5.1 #6): tld reads as a file type
+  // (.py python, .md markdown, .zip archive...). penalty flag only —
+  // evidence and severity tiers in research/file-ext-clash.json
+  fileExtClash?: boolean | null;
+  fileExtSeverity?: "high" | "medium" | null; // high: widely parsed; medium: dev/technical
+  fileExtNote?: string | null; // human-readable, e.g. ".py file (python source)"
   // practical registration route: who can actually buy this ending
   registrationRoute?:
     | "direct"

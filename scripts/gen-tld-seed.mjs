@@ -25,8 +25,16 @@ let routeCorrections = [];
 try { routeCorrections = read("../research/cctld-intermediaries-corrections.json"); } catch { /* optional input */ }
 let secondLevel = [];
 try { secondLevel = read("../research/cctld-second-level.json"); } catch { /* optional input */ }
+let fileExtClash = { clashes: [] };
+try { fileExtClash = read("../research/file-ext-clash.json"); } catch { /* optional input */ }
+try { secondLevel = read("../research/cctld-second-level.json"); } catch { /* optional input */ }
 const INTERMEDIARY = new Map(intermediaries.map((i) => [String(i.tld).toLowerCase(), i]));
 for (const c of routeCorrections) INTERMEDIARY.set(String(c.tld).toLowerCase(), c);
+const FILE_EXT = new Map(
+  (fileExtClash.clashes ?? [])
+    .filter((c) => c.severity === "high" || c.severity === "medium")
+    .map((c) => [String(c.tld).toLowerCase(), c])
+);
 const SECOND_LEVEL = new Map(secondLevel.map((s) => [String(s.tld).toLowerCase(), s]));
 
 const GOOGLE_GENERIC = new Set((googleGeneric.tlds ?? []).map((t) => t.toLowerCase()));
@@ -41,6 +49,22 @@ const restrictionToAvailability = {
   verification: "restricted",
   closed: "closed",
 };
+
+
+// file-extension clash (spec 12.5.1 #6): the tld reads as a file type
+// (.py, .md, .zip...) — penalty flag, never an exclusion. severity tiers
+// and evidence live in research/file-ext-clash.json; classic tlds
+// (com/org/net) carry real historical matches but are never mistaken for
+// files, so they stay unflagged (documented in the research file).
+function fileExtFor(tld) {
+  const f = FILE_EXT.get(tld);
+  if (!f) return {};
+  return {
+    fileExtClash: true,
+    fileExtSeverity: f.severity,
+    fileExtNote: f.readsAs,
+  };
+}
 
 function flagsFor(tld, researchedFlags) {
   const out = [...new Set(researchedFlags ?? [])];
@@ -109,6 +133,7 @@ for (const c of cctlds) {
     renewalPrice: c.renewalPrice ?? null,
     rdapSupported: c.rdapSupported ?? null,
     flags: flagsFor(tld, [...(c.flags ?? []), ...sldFlags]),
+    ...fileExtFor(tld),
     secondLevelRegistrable: rootRegistrable,
     thirdLevelNamespaces: sl?.thirdLevelNamespaces ?? null,
     sourceUrl: c.sourceUrl ?? pf?.sourceUrl ?? null,
@@ -143,7 +168,9 @@ for (const g of gtlds) {
     flags: flagsFor(tld, [
       ...(g.flags ?? []),
       ...(g.hstsPreload ? ["hsts_preloaded"] : []),
+      ...(FILE_EXT.get(tld)?.severity === "high" ? ["file-ext-clash"] : []),
     ]),
+    ...fileExtFor(tld),
     sourceUrl: g.sourceUrl ?? pf?.sourceUrl ?? null,
     accessed: g.accessed ?? "2026-10-18",
     verified: Boolean(g.verified),

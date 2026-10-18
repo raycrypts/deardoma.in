@@ -31,6 +31,9 @@ function rowToMeta(r: any): TldMeta {
     intermediaryFee: r.intermediary_fee,
     businessPresenceAccepted: r.business_presence_accepted,
     flags: r.flags ?? [],
+    fileExtClash: r.file_ext_clash ?? false,
+    fileExtSeverity: r.file_ext_severity ?? null,
+    fileExtNote: r.file_ext_note ?? null,
     sourceUrl: r.source_url,
     accessed: r.accessed,
     verified: r.verified,
@@ -131,6 +134,9 @@ async function main() {
             : "not registrable",
         secondLevelRegistrable: m.secondLevelRegistrable ?? null,
         thirdLevelNamespaces: m.thirdLevelNamespaces ?? null,
+        fileExtClash: m.fileExtClash ?? false,
+        fileExtSeverity: m.fileExtSeverity ?? null,
+        fileExtNote: m.fileExtNote ?? null,
         restriction: m.restriction,
         restrictionNote: m.restrictionNote,
         restrictionVerified: m.restrictionVerified ?? false,
@@ -151,7 +157,10 @@ async function main() {
             : null,
         sourceUrl: m.sourceUrl ?? null,
         accessed: m.accessed ?? null,
-        hackFit: hackFit(c),
+        hackFit: hackFit(c, {
+          severity: m.fileExtSeverity ?? null,
+          note: m.fileExtNote ?? null,
+        }),
         ...(m.tldType === "web3"
           ? {
               web3: true,

@@ -57,6 +57,7 @@ export interface TldMetaLite {
   tldType?: string;
   secondLevelRegistrable?: boolean | null;
   typicalPrice?: number | null;
+  fileExtSeverity?: "high" | "medium" | null;
 }
 
 export interface ExcludedHack {
@@ -141,6 +142,11 @@ export function rankCandidates(
       s += 150; // buyable via a trustee/local-agent service: small friction penalty
     } else {
       s += 250; // hard restriction (presence/residency/business entity): below intermediary-buyable
+    }
+    if (m?.fileExtSeverity === "high") {
+      s += 300; // reads as a file type people and systems parse (.py, .zip)
+    } else if (m?.fileExtSeverity === "medium") {
+      s += 100; // recognized in dev/technical contexts (.tcl, .makefile)
     }
     s += Math.min(Number(m?.typicalPrice ?? 50), 100);
     return s;

@@ -1,0 +1,1295 @@
+{
+ "source": "freedesktop shared-mime-info (globs) + python mimetypes registry, intersected with the iana tld universe; severity tiers curated 2026-10-18",
+ "accessed": "2026-10-18",
+ "classicExcluded": [
+  "com",
+  "net",
+  "org"
+ ],
+ "clashes": [
+  {
+   "tld": "abc",
+   "severity": "low",
+   "readsAs": ".abc file (obscure format)",
+   "evidence": [
+    "text/vnd.abc"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ac",
+   "severity": "low",
+   "readsAs": ".ac file (obscure format)",
+   "evidence": [
+    "application/pkix-attr-cert"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ads",
+   "severity": "low",
+   "readsAs": ".ads file (obscure format)",
+   "evidence": [
+    "text/x-adasrc"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "ag",
+   "severity": "low",
+   "readsAs": ".ag file (obscure format)",
+   "evidence": [
+    "image/x-applix-graphics"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "ai",
+   "severity": "high",
+   "readsAs": ".ai file (adobe illustrator document)",
+   "evidence": [
+    "application/illustrator",
+    "application/postscript"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "al",
+   "severity": "low",
+   "readsAs": ".al file (obscure format)",
+   "evidence": [
+    "application/x-perl"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "ar",
+   "severity": "low",
+   "readsAs": ".ar file (obscure format)",
+   "evidence": [
+    "application/x-archive"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "art",
+   "severity": "low",
+   "readsAs": ".art file (obscure format)",
+   "evidence": [
+    "message/rfc822"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "as",
+   "severity": "medium",
+   "readsAs": ".as file (actionscript source)",
+   "evidence": [
+    "application/x-applix-spreadsheet"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "au",
+   "severity": "high",
+   "readsAs": ".au file (sun audio file)",
+   "evidence": [
+    "audio/basic"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "aw",
+   "severity": "low",
+   "readsAs": ".aw file (obscure format)",
+   "evidence": [
+    "application/x-applix-word"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "axa",
+   "severity": "low",
+   "readsAs": ".axa file (obscure format)",
+   "evidence": [
+    "audio/annodex"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "bar",
+   "severity": "low",
+   "readsAs": ".bar file (obscure format)",
+   "evidence": [
+    "application/vnd.qualcomm.brew-app-res"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "boo",
+   "severity": "low",
+   "readsAs": ".boo file (obscure format)",
+   "evidence": [
+    "text/x-boo"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "book",
+   "severity": "low",
+   "readsAs": ".book file (obscure format)",
+   "evidence": [
+    "application/x-maker"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "box",
+   "severity": "low",
+   "readsAs": ".box file (obscure format)",
+   "evidence": [
+    "application/vnd.previewsystems.box"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "bz",
+   "severity": "low",
+   "readsAs": ".bz file (obscure format)",
+   "evidence": [
+    "application/x-bzip"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "cab",
+   "severity": "low",
+   "readsAs": ".cab file (obscure format)",
+   "evidence": [
+    "application/vnd.ms-cab-compressed"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "car",
+   "severity": "low",
+   "readsAs": ".car file (obscure format)",
+   "evidence": [
+    "application/vnd.ipld.car"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "cat",
+   "severity": "medium",
+   "readsAs": ".cat file (troff preformatted page)",
+   "evidence": [
+    "application/vnd.ms-pki.seccat"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "cc",
+   "severity": "medium",
+   "readsAs": ".cc file (c++ source)",
+   "evidence": [
+    "text/x-c++src"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "cl",
+   "severity": "high",
+   "readsAs": ".cl file (common lisp source)",
+   "evidence": [
+    "application/simple-filter+xml",
+    "text/x-opencl-src"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "coffee",
+   "severity": "low",
+   "readsAs": ".coffee file (obscure format)",
+   "evidence": [
+    "application/vnd.coffeescript"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "cpa",
+   "severity": "low",
+   "readsAs": ".cpa file (obscure format)",
+   "evidence": [
+    "chemical/x-compass"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "cr",
+   "severity": "medium",
+   "readsAs": ".cr file (crystal source)",
+   "evidence": [
+    "text/x-crystal"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "cu",
+   "severity": "medium",
+   "readsAs": ".cu file (cuda source)",
+   "evidence": [
+    "application/cu-seeme"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "cw",
+   "severity": "low",
+   "readsAs": ".cw file (obscure format)",
+   "evidence": [
+    "application/prs.cww"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "dds",
+   "severity": "low",
+   "readsAs": ".dds file (obscure format)",
+   "evidence": [
+    "image/x-dds"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "directory",
+   "severity": "low",
+   "readsAs": ".directory file (obscure format)",
+   "evidence": [
+    "application/x-desktop"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "dot",
+   "severity": "medium",
+   "readsAs": ".dot file (graphviz/word template)",
+   "evidence": [
+    "application/msword-template",
+    "text/vnd.graphviz"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "es",
+   "severity": "high",
+   "readsAs": ".es file (ecmascript/javascript module)",
+   "evidence": [
+    "application/ecmascript",
+    "text/javascript"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "fit",
+   "severity": "low",
+   "readsAs": ".fit file (obscure format)",
+   "evidence": [
+    "application/fits",
+    "image/fits"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "fly",
+   "severity": "low",
+   "readsAs": ".fly file (obscure format)",
+   "evidence": [
+    "text/vnd.fly"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "fm",
+   "severity": "low",
+   "readsAs": ".fm file (obscure format)",
+   "evidence": [
+    "application/vnd.framemaker",
+    "application/x-maker"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "fo",
+   "severity": "low",
+   "readsAs": ".fo file (obscure format)",
+   "evidence": [
+    "application/vnd.software602.filler.form+xml",
+    "text/x-xslfo"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "gal",
+   "severity": "low",
+   "readsAs": ".gal file (obscure format)",
+   "evidence": [
+    "chemical/x-gaussian-log"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "gb",
+   "severity": "low",
+   "readsAs": ".gb file (obscure format)",
+   "evidence": [
+    "application/x-gameboy-rom"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "gd",
+   "severity": "medium",
+   "readsAs": ".gd file (godot script)",
+   "evidence": [
+    "application/x-gdscript"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "gf",
+   "severity": "low",
+   "readsAs": ".gf file (obscure format)",
+   "evidence": [
+    "application/x-tex-gf"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "gg",
+   "severity": "low",
+   "readsAs": ".gg file (obscure format)",
+   "evidence": [
+    "application/x-gamegear-rom"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "gl",
+   "severity": "low",
+   "readsAs": ".gl file (obscure format)",
+   "evidence": [
+    "video/gl"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "gmo",
+   "severity": "low",
+   "readsAs": ".gmo file (obscure format)",
+   "evidence": [
+    "application/x-gettext-translation"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "gp",
+   "severity": "low",
+   "readsAs": ".gp file (obscure format)",
+   "evidence": [
+    "application/x-gnuplot"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "gs",
+   "severity": "medium",
+   "readsAs": ".gs file (genie source)",
+   "evidence": [
+    "text/x-genie"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "gy",
+   "severity": "medium",
+   "readsAs": ".gy file (groovy source)",
+   "evidence": [
+    "text/x-groovy"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "ifm",
+   "severity": "low",
+   "readsAs": ".ifm file (obscure format)",
+   "evidence": [
+    "application/vnd.shana.informed.formdata"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "info",
+   "severity": "medium",
+   "readsAs": ".info file (gnu info document)",
+   "evidence": [
+    "application/x-info"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ink",
+   "severity": "low",
+   "readsAs": ".ink file (obscure format)",
+   "evidence": [
+    "application/inkml+xml"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ist",
+   "severity": "low",
+   "readsAs": ".ist file (obscure format)",
+   "evidence": [
+    "chemical/x-isostar"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "it",
+   "severity": "low",
+   "readsAs": ".it file (obscure format)",
+   "evidence": [
+    "audio/x-it"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "java",
+   "severity": "high",
+   "readsAs": ".java file (java source)",
+   "evidence": [
+    "text/x-java"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "kia",
+   "severity": "low",
+   "readsAs": ".kia file (obscure format)",
+   "evidence": [
+    "application/vnd.kidspiration"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "kim",
+   "severity": "low",
+   "readsAs": ".kim file (obscure format)",
+   "evidence": [
+    "application/vnd.kde.kphotoalbum-import"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "la",
+   "severity": "low",
+   "readsAs": ".la file (obscure format)",
+   "evidence": [
+    "application/x-shared-library-la"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "ly",
+   "severity": "medium",
+   "readsAs": ".ly file (lilypond source)",
+   "evidence": [
+    "text/x-lilypond"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ma",
+   "severity": "medium",
+   "readsAs": ".ma file (mathematica document)",
+   "evidence": [
+    "application/mathematica"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "man",
+   "severity": "medium",
+   "readsAs": ".man file (manual page)",
+   "evidence": [
+    "application/x-troff-man"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "md",
+   "severity": "high",
+   "readsAs": ".md file (markdown document)",
+   "evidence": [
+    "text/markdown"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "me",
+   "severity": "medium",
+   "readsAs": ".me file (troff document)",
+   "evidence": [
+    "application/x-troff-me",
+    "text/x-troff-me"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "med",
+   "severity": "low",
+   "readsAs": ".med file (obscure format)",
+   "evidence": [
+    "audio/x-mod"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "mk",
+   "severity": "medium",
+   "readsAs": ".mk file (makefile)",
+   "evidence": [
+    "text/x-makefile"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "ml",
+   "severity": "high",
+   "readsAs": ".ml file (ocaml/ml source)",
+   "evidence": [
+    "text/x-ocaml"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "mm",
+   "severity": "low",
+   "readsAs": ".mm file (obscure format)",
+   "evidence": [
+    "application/x-freemind",
+    "text/x-objc++src",
+    "text/x-troff-mm"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "mo",
+   "severity": "low",
+   "readsAs": ".mo file (obscure format)",
+   "evidence": [
+    "application/x-gettext-translation",
+    "text/x-modelica"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "mobi",
+   "severity": "high",
+   "readsAs": ".mobi file (mobipocket ebook)",
+   "evidence": [
+    "application/x-mobipocket-ebook"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "mov",
+   "severity": "high",
+   "readsAs": ".mov file (quicktime movie)",
+   "evidence": [
+    "video/quicktime"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "movie",
+   "severity": "low",
+   "readsAs": ".movie file (obscure format)",
+   "evidence": [
+    "video/x-sgi-movie"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ms",
+   "severity": "medium",
+   "readsAs": ".ms file (troff ms document)",
+   "evidence": [
+    "application/x-troff-ms",
+    "text/x-troff-ms"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "msd",
+   "severity": "low",
+   "readsAs": ".msd file (obscure format)",
+   "evidence": [
+    "application/vnd.fdsn.mseed"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "nc",
+   "severity": "medium",
+   "readsAs": ".nc file (netcdf data)",
+   "evidence": [
+    "application/x-netcdf"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "nrw",
+   "severity": "low",
+   "readsAs": ".nrw file (obscure format)",
+   "evidence": [
+    "image/x-nikon-nrw"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "one",
+   "severity": "high",
+   "readsAs": ".one file (onenote notebook)",
+   "evidence": [
+    "application/onenote"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ott",
+   "severity": "low",
+   "readsAs": ".ott file (obscure format)",
+   "evidence": [
+    "application/vnd.oasis.opendocument.text-template"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "pk",
+   "severity": "low",
+   "readsAs": ".pk file (obscure format)",
+   "evidence": [
+    "application/x-tex-pk"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "pl",
+   "severity": "high",
+   "readsAs": ".pl file (perl source)",
+   "evidence": [
+    "application/x-perl",
+    "text/x-perl"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "pm",
+   "severity": "high",
+   "readsAs": ".pm file (perl module)",
+   "evidence": [
+    "application/x-pagemaker",
+    "application/x-perl",
+    "text/x-perl"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ps",
+   "severity": "low",
+   "readsAs": ".ps file (obscure format)",
+   "evidence": [
+    "application/postscript"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "pt",
+   "severity": "low",
+   "readsAs": ".pt file (obscure format)",
+   "evidence": [
+    "application/vnd.snesdev-page-table"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "pub",
+   "severity": "high",
+   "readsAs": ".pub file (publisher document)",
+   "evidence": [
+    "application/vnd.exstream-package",
+    "application/vnd.ms-publisher"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "pw",
+   "severity": "low",
+   "readsAs": ".pw file (obscure format)",
+   "evidence": [
+    "application/x-pw"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "py",
+   "severity": "high",
+   "readsAs": ".py file (python source)",
+   "evidence": [
+    "text/x-python",
+    "text/x-python3"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "rip",
+   "severity": "low",
+   "readsAs": ".rip file (obscure format)",
+   "evidence": [
+    "audio/vnd.rip"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "rs",
+   "severity": "high",
+   "readsAs": ".rs file (rust source)",
+   "evidence": [
+    "application/rls-services+xml",
+    "text/rust"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sap",
+   "severity": "low",
+   "readsAs": ".sap file (obscure format)",
+   "evidence": [
+    "application/x-thomson-sap-image"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "sc",
+   "severity": "medium",
+   "readsAs": ".sc file (scala script)",
+   "evidence": [
+    "application/vnd.ibm.secure-container",
+    "text/x-scala"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sd",
+   "severity": "low",
+   "readsAs": ".sd file (obscure format)",
+   "evidence": [
+    "chemical/x-mdl-sdfile"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sg",
+   "severity": "low",
+   "readsAs": ".sg file (obscure format)",
+   "evidence": [
+    "application/x-sg1000-rom"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "sh",
+   "severity": "high",
+   "readsAs": ".sh file (shell script)",
+   "evidence": [
+    "application/x-shellscript",
+    "text/x-sh"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "si",
+   "severity": "low",
+   "readsAs": ".si file (obscure format)",
+   "evidence": [
+    "text/vnd.wap.si"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sk",
+   "severity": "low",
+   "readsAs": ".sk file (obscure format)",
+   "evidence": [
+    "image/x-skencil"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "sl",
+   "severity": "low",
+   "readsAs": ".sl file (obscure format)",
+   "evidence": [
+    "text/vnd.wap.sl"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sm",
+   "severity": "low",
+   "readsAs": ".sm file (obscure format)",
+   "evidence": [
+    "application/vnd.stepmania.stepchart"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "so",
+   "severity": "high",
+   "readsAs": ".so file (shared library / executable)",
+   "evidence": [
+    "application/octet-stream",
+    "application/x-sharedlib"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "spot",
+   "severity": "low",
+   "readsAs": ".spot file (obscure format)",
+   "evidence": [
+    "text/vnd.in3d.spot"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sr",
+   "severity": "low",
+   "readsAs": ".sr file (obscure format)",
+   "evidence": [
+    "application/vnd.sigrok.session"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ss",
+   "severity": "medium",
+   "readsAs": ".ss file (scheme source)",
+   "evidence": [
+    "text/x-scheme"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "st",
+   "severity": "low",
+   "readsAs": ".st file (obscure format)",
+   "evidence": [
+    "application/vnd.sailingtracker.track"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "stc",
+   "severity": "low",
+   "readsAs": ".stc file (obscure format)",
+   "evidence": [
+    "application/vnd.sun.xml.calc.template"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "sv",
+   "severity": "medium",
+   "readsAs": ".sv file (systemverilog source)",
+   "evidence": [
+    "text/x-svsrc"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "target",
+   "severity": "low",
+   "readsAs": ".target file (obscure format)",
+   "evidence": [
+    "text/x-systemd-unit"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "td",
+   "severity": "low",
+   "readsAs": ".td file (obscure format)",
+   "evidence": [
+    "application/urc-targetdesc+xml"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "tk",
+   "severity": "medium",
+   "readsAs": ".tk file (tcl source)",
+   "evidence": [
+    "text/tcl",
+    "text/x-tcl"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "tm",
+   "severity": "low",
+   "readsAs": ".tm file (obscure format)",
+   "evidence": [
+    "text/texmacs"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "tr",
+   "severity": "medium",
+   "readsAs": ".tr file (troff document)",
+   "evidence": [
+    "text/troff"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "vivo",
+   "severity": "low",
+   "readsAs": ".vivo file (obscure format)",
+   "evidence": [
+    "video/vnd.vivo"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "win",
+   "severity": "low",
+   "readsAs": ".win file (obscure format)",
+   "evidence": [
+    "model/vnd.gdl"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "ws",
+   "severity": "low",
+   "readsAs": ".ws file (obscure format)",
+   "evidence": [
+    "application/x-wonderswan-rom"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info"
+   ]
+  },
+  {
+   "tld": "xyz",
+   "severity": "low",
+   "readsAs": ".xyz file (obscure format)",
+   "evidence": [
+    "chemical/x-xyz"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "yt",
+   "severity": "low",
+   "readsAs": ".yt file (obscure format)",
+   "evidence": [
+    "application/vnd.youtube.yt",
+    "video/vnd.youtube.yt"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "zip",
+   "severity": "high",
+   "readsAs": ".zip file (zip archive)",
+   "evidence": [
+    "application/zip"
+   ],
+   "sources": [
+    "freedesktop shared-mime-info",
+    "python mimetypes registry"
+   ]
+  },
+  {
+   "tld": "zone",
+   "severity": "low",
+   "readsAs": ".zone file (obscure format)",
+   "evidence": [
+    "text/dns"
+   ],
+   "sources": [
+    "python mimetypes registry"
+   ]
+  }
+ ]
+}
