@@ -5,7 +5,7 @@ deardomain is a two-assistant product for people who want the right domain name:
 - **dom**, the domainhack assistant. you give it a word or phrase, it finds every way to split that word across a domain name and tells you which ones you can actually own.
 - **donna**, the domain broker assistant. you point her at a taken domain, she works out who owns it, whether they're using it, contacts them politely on your behalf, and negotiates a small purchase.
 
-both assistants cover the same ground from opposite ends: dom finds what's *available*, donna gets what *isn't*.
+both assistants cover the same ground from opposite ends: dom finds what's *available*, donna gets what *isn't*, and dom feeds donna: when a hack you want is taken, dom runs the precursor check (the free part of donna's pre-check) and hands the domain over as a ready-made campaign.
 
 ## what deardomain is
 
@@ -15,22 +15,22 @@ the product runs on researched data, not vibes. every verdict a user sees ("this
 
 ## dom, the domainhack assistant
 
-dom answers: *how can i spell this word as a domain?* enter a word or phrase; dom splits it against the full list of domain endings and ranks the results.
+dom answers: *how can i spell this word as a domain?* enter a word or phrase; dom splits it against the full list of domain endings and ranks the results. dom never talks about pricing; its job is fit and ownability, not what a registrar charges.
 
 **what dom considers:**
 
 - **registrability first.** an ending that reads perfectly but can't be registered is never suggested. dom knows which registries never opened (.sj, .bv), which only sell third-level names (.il: you can buy co.il, not a .il root), which are closed or sanctioned (.er, .ir), which are brand-only gtlds, and it surfaces these as excluded matches with the reason, instead of silently hiding them.
 - **registration barriers per registry.** local presence, residency, verification requirements, business-presence exceptions (.ie, .uk): each candidate shows its barrier and route, whether direct, intermediary/trustee (with fee), or business-presence.
-- **real prices.** cheapest observed registration and renewal across registrar comparisons, so a hack's total cost of ownership is visible before you buy.
 - **hack fit.** whether the split reads naturally (does it survive being spoken aloud, does the dot break the word awkwardly), whether it collides with a file extension, and how it behaves in links and email addresses.
 - **search and platform impact.** google treats some ccTLDs as generic, which is good for global ambitions. others are geotargeted or platform-blocked; dom annotates each candidate.
 - **risk radar.** sovereignty concerns (.io, .ly), sanctions (.ru, .ir), free-registry history (.tk), discontinued endings (.su): a per-tld risk view, toggleable alongside the main results.
-- **modes.** a **compare mode** for weighing shortlisted candidates side by side (price, barrier, fit, risk at a glance), and a **risk radar mode** for browsing endings by risk profile.
+- **modes.** a **compare mode** for weighing shortlisted candidates side by side (barrier, fit, risk at a glance), and a **risk radar mode** for browsing endings by risk profile.
 
 **default coverage: the latin alphabet only.** at first phase dom covers latin-script domain names, since that's where the purchasable, resolvable web is. everything else sits behind toggles (off by default):
 
 - **web3 domain hacks**: ens and unstoppable-style namespaces, which don't open in a normal browser.
 - **punycode domain hacks**: idn endings (xn--), whose rendered forms vary by browser and client and whose registries often carry their own restrictions.
+- **taken domain hacks**: dom finds hacks for your keyword whether or not they're free. available ones show by default; the taken ones stay hidden until toggled, because a taken hack isn't a dead end, it's a handoff.
 
 ## donna, the domain broker assistant
 
