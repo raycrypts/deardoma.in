@@ -50,9 +50,11 @@ a number (domainhacks branch SCOPE.md). donna never shows contact
 addresses before the buyer pays; she counts routes and gates on
 confidence. a reserved-mission ending (.gov, .mil, .edu, .int, .arpa)
 never appears in dom's results and donna's intake refuses it outright
-with the reason (src/core/reserved.ts on the donna branch). this is
-what flat fees buy you: the product can afford to be disciplined
-because nothing about it is hand-made.
+with the reason (src/core/reserved.ts on the donna branch). campaigns run as queued
+jobs, not conversations a person keeps in their head, and every
+state change writes a timestamped event you can read. this is what
+flat fees buy you: the product can afford to be disciplined because
+nothing about it is hand-made.
 
 ## the moat: who is actually on the other end
 
@@ -139,8 +141,10 @@ dashboard shows each step as it happens: what's being checked, what's
 been ruled out, what she's waiting on.
 
 the pre-check reads the registration state (registrar, dates, status
-codes like redemptionperiod and pendingdelete), the dns shape (a real
-mailbox or a forwarding hobby setup, parked or dormant nameservers),
+codes like redemptionperiod and pendingdelete), the dns shape (a real mailbox or a forwarding hobby setup, told
+apart by naming the mail providers: google workspace and fastmail
+mean in use, improvmx and cloudflare email routing mean forwarding;
+parked or dormant nameservers),
 the website if any (parked, for-sale with asking price, placeholder,
 or live and active, judged from content and freshness signals), the
 wayback history, and public mentions from github and the web. she
@@ -167,6 +171,18 @@ the outreach is polite by construction, not by policy
 - a real postal address in every message, as can-spam requires.
 - cold outreach never comes from the brand domain; sending reputation
   is protected as deliberately as the outreach is polite.
+
+under the dashboard, the campaign is a 17-state lifecycle, created,
+prechecked, deployed, contacting, awaiting reply, followed up, no
+response, replied, negotiating, agreed, payment pending, transfer
+pending, completed, and the exits: declined, handed off, opted out,
+closed. the
+transitions are a pure state machine that throws on an illegal move,
+the timeouts are configuration, follow-up after 4 days, no-response
+at 7, staleness alerts to both sides, and every step is a queued job
+that writes a timestamped event to a log (src/core/state-machine.ts,
+src/workers/handlers.ts on the donna branch). the timeline you watch
+is that event log, not a promise about what a human is doing.
 
 the negotiation runs inside limits you set: an opening offer
 (defaulting to about 60% of your maximum), at most two counters in

@@ -13,8 +13,10 @@ a fee per attempt, a fee on completion, no commission, exact rates
 set at launch.
 
 - **the pre-check.** registration data (rdap, whois fallback), dns
-  classification (parking nameservers, forwarding vs real mailbox
-  providers), website classification (parked, for sale with listed
+  classification (parking nameservers; mail providers named:
+  google workspace, microsoft 365, zoho, fastmail, proton read as in
+  use, improvmx, forwardemail, cloudflare email routing and registrar
+  forwarding read as forwarding), website classification (parked, for sale with listed
   price, default page, live, with activity signals), wayback
   history, github and public mentions, email checks that never touch
   abuse@ or postmaster@. output: a usage status, who likely holds it,
@@ -28,9 +30,20 @@ set at launch.
   the donna branch).
 - **the pipeline view.** the buyer dashboard shows the same steps the
   pre-check runs, then live campaign state: contacted, awaiting
-  reply, negotiating, or done. every state change, timestamped; if
-  nothing comes back, you see exactly what was tried and when
-  (root README.md).
+  reply, negotiating, or done. the timeline is a literal event log:
+  every step is a queued job that writes a timestamped event row,
+  and if nothing comes back, you see exactly what was tried and when
+  (root README.md, src/workers/handlers.ts on the donna branch).
+- **the lifecycle state machine.** the campaign is a 17-state
+  lifecycle, created, prechecked, deployed, contacting, awaiting
+  reply, followed up, negotiating, agreed, payment pending, transfer
+  pending, completed, plus declined, handed off, opted out, closed.
+  pure transitions that throw on an illegal move; any state can
+  become opted_out, none can leave it (src/core/state-machine.ts).
+- **the timeouts.** configurable, in code: follow-up after 4 days
+  with no reply, no_response at 7 days after the follow-up, staleness
+  alerts on payment_pending and transfer_pending at 7 days, to both
+  sides (src/core/state-machine.ts TIMEOUTS, spec §4).
 - **the deployment.** a flat fee, one campaign. contact routes in
   priority order: verified owner email, github match, site email,
   catch-all, checked common addresses, privacy forwarding, registrar
