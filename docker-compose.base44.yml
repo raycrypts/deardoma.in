@@ -1,0 +1,90 @@
+# Base44 sandbox dev environment — donna backend (api + worker + postgres).
+# Source is bind-mounted; deps install at container start; tsx watch live-reloads.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: donna
+      POSTGRES_PASSWORD: donna
+      POSTGRES_DB: donna
+    volumes:
+      - donna_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U donna -d donna"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: on-failure
+
+  migrate:
+    image: node:22
+    working_dir: /app
+    volumes:
+      - .:/app
+      - api_node_modules:/app/node_modules
+    environment:
+      DATABASE_URL: postgres://donna:donna@postgres:5432/donna
+    command: sh -ec "npm install --no-audit --no-fund && npm run migrate"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    image: node:22
+    working_dir: /app
+    volumes:
+      - .:/app
+      - api_node_modules:/app/node_modules
+    environment:
+      PORT: "3000"
+      DATABASE_URL: postgres://donna:donna@postgres:5432/donna
+    env_file:
+      - path: /run/base44/app.env
+        required: false
+    command: sh -ec "npm install --no-audit --no-fund && exec npm run dev"
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+    restart: on-failure
+
+  worker:
+    image: node:22
+    working_dir: /app
+    volumes:
+      - .:/app
+      - worker_node_modules:/app/node_modules
+    environment:
+      DATABASE_URL: postgres://donna:donna@postgres:5432/donna
+      HEARTBEAT_FILE: /tmp/donna-worker-heartbeat
+    env_file:
+      - path: /run/base44/app.env
+        required: false
+    command: sh -ec "npm install --no-audit --no-fund && exec npm run worker"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "test -n \"$$(find /tmp/donna-worker-heartbeat -mmin -1 2>/dev/null)\""]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+    restart: on-failure
+
+volumes:
+  donna_pgdata:
+  api_node_modules:
+  worker_node_modules:
