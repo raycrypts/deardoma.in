@@ -3,150 +3,142 @@ title: standalone
 status: draft, waits in review
 ---
 
-# dear domain
+# deardomain
 
-the name you want is parked. donna writes the letter.
+the name you want is parked. dom finds what's available, donna gets
+what isn't.
 
-dear domain is a tiny acquisition service for micro-deals: a domain
-worth about $10, bought for $30 or less from an owner who isn't using
-it. the product is an ai agent named donna. you point her at a domain.
-she works out who owns it, writes to them politely, negotiates a small
-price inside limits you set, and walks both sides through the payment
-and the transfer. you never send the awkward email. you never haggle.
-you read the timeline.
+deardomain is a two-assistant product for people who want the right
+domain name. **dom**, the domainhack assistant: you give it a word, it
+finds every way to split that word across a domain name and tells you
+which ones you can actually own. **donna**, the domain broker
+assistant: you point her at a taken domain, she works out who owns it,
+whether they're using it, contacts them politely on your behalf, and
+negotiates a small purchase. both assistants cover the same ground
+from opposite ends, and share the same researched datasets underneath.
+the product ships as a web app and a cli.
+
+this is the long tail of domain decisions: hobbyists, side projects,
+micro-brands, where a $199-minimum broker or a $2,000 aftermarket
+listing is nonsense (root README.md). flat fee per attempt, flat fee
+on completion, no commission on the buying cost, so the product's only
+incentive is getting you the domain at the cheapest price possible.
+exact rates are set at launch. the discovery tools that lead into the
+paid service are free.
 
 ## the moat: who is actually on the other end
 
-a broker's playbook is written against the professional squatter: the
-domainer with a portfolio, the priced-to-sell landing page, the
-leverage negotiation that drags for weeks. that assumption prices the
-whole industry. minimum fees start around $199 (donna-spec.md §1, the
-spec's market thesis; needs verification against live broker pricing
-before publishing), because you can't afford a human doing adversarial
-negotiation over a name worth less than the fee.
+the acquisition industry treats every unused-domain owner as a
+professional squatter: the domainer with a portfolio, the
+priced-to-sell landing page, the leverage negotiation that drags for
+weeks. that assumption prices the whole industry, because you can't
+afford a human doing adversarial negotiation over a name worth less
+than the fee.
 
-the assumption is also wrong for most of the market. the typical unused
-domain is held by a person with one name: the side project that ended,
-the idea parked for later, the renewal that auto-charged a forgotten
-card. to them, $30 is not an insult. it's found money for a thing they
-were half relieved to stop paying for.
+the assumption is also wrong for most of the market. the typical
+unused domain is held by a person with one name: the side project that
+ended, the idea parked for later, the renewal that auto-charged a
+forgotten card. to them, a small offer is not an insult. it's found
+money for a thing they were half relieved to stop paying for.
 
 serving that person is exactly the complexity brokers skip, because at
-$30 a deal it cannot be done by hand: read the registration, dns, the
-site, the wayback machine and public mentions to tell the
+micro-deal prices it cannot be done by hand: read the registration,
+dns, the site, the wayback machine and public mentions to tell the
 forgot-they-owned-it from the priced-to-sell. score how confident you
 are in a candidate owner before writing, and when the evidence is
 thin, ask "are you the owner?" instead of making an offer
 (src/core/contact-routes.ts on the donna branch: gates at 0.7 and
 0.4). a broker cannot do that per deal at this price. an agent does
 the whole pre-check for about a cent (donna-spec.md §2), which is the
-only reason this market can exist at all.
+only reason this market can exist at all. finding out who you are
+talking to is the product.
 
 and when the other end does turn out to be the professional, the
 pre-check says so: the marketplace landing page is detected, the
-listed price is shown, and the buyer is pointed at the pro's asking
-price or away, not into a fake micro-deal.
+asking price is shown, and the buyer is pointed at the pro's number or
+away, not into a fake micro-deal.
 
-## how it maps to a real acquisition
+## dom, the domainhack assistant
 
-the product is organized the way a small acquisition is staffed. every
-role is its own system, so none of them can exceed its brief:
+dom answers: how can i spell this word as a domain? enter a word or
+phrase; dom splits it against all 1,437 delegated endings
+(data.iana.org) and ranks the results by what you can actually own.
 
-- **the scout.** the free pre-check: registration data, dns, the site
-  itself, the wayback machine, github and public mentions. read
-  together, they say whether a domain is unused, lightly used or
-  actively used, who likely holds it and how confident we are, and
-  what a fair band would be. contact routes are counted for you, never
-  exposed.
-- **the letter writer.** donna's first message is plain text, 80 words
-  or fewer, no links, no images, no tracking pixels (donna-spec.md
-  §8.1). it says she is an ai acting for a buyer, names the offer, and
-  makes "no" the easiest reply in the inbox.
-- **the negotiator.** she opens around sixty percent of your ceiling,
-  counters at most twice, each step smaller (25% then 15% of the
-  remaining gap, src/core/negotiation.ts on the donna branch), and
-  never reveals your maximum. if the seller's ask is above it, she
-  stops and hands the thread to you.
-- **the closer.** the suggested order is transfer first, payment
-  second: a registrar push or an auth code, then the money. donna
-  gives step-by-step guides per registrar and watches rdap until the
-  registrant changes.
-- **the watchman.** when a campaign ends without a deal, the expiry
-  watch follows the domain to its drop date and tells you when to
-  backorder, instead of pretending a dead negotiation was the only
-  shot.
-- **the map room.** the free domain hack finder, there for the times a
-  better name exists that nobody has to be asked for.
+it starts from registrability, not spelling: an ending that reads
+perfectly but can't be registered is never suggested, and the
+excluded matches are surfaced with the reason instead of silently
+hidden (never opened like .sj and .bv, third-level-only like .il,
+closed or sanctioned like .er and .ir, brand-only gtlds). each
+candidate shows its registration barrier and route, direct or
+trustee-mediated with the fee, and the cheapest observed registration
+and renewal price, so a hack's total cost of ownership is visible
+before the checkout, not after.
 
-that separation is the whole idea. a human broker improvises; a script
-you're scared to run skimps. donna keeps the roles apart and the
-limits in code, so politeness isn't a policy document, it's a state
-machine.
+then dom judges the split as a name, not just as a url: does the dot
+fall at a natural break, does it survive being spoken aloud, does it
+collide with a file extension like .zip or .mov, does it autolink in
+chat apps, does it read cleanly as an email address. and it tells the
+truth about endings that sales pages don't: google's
+generic-vs-geotargeted treatment, plus a per-ending risk radar
+(sovereignty concerns, sanctions, free-registry history, discontinued
+endings), toggleable alongside the main results. compare mode weighs
+shortlisted candidates side by side; risk radar mode browses endings
+by risk profile.
 
-## politeness, enforced by the state machine
+default coverage is the latin alphabet, since that's where the
+purchasable, resolvable web is. web3 and punycode hacks sit behind
+off-by-default toggles, labeled for what they are: ens and unstoppable
+names don't open in a normal browser, and idn endings render
+differently by client. available names get a registrar link; taken
+ones lead into donna's paid outreach.
 
-the ethics are the brand, and they are non-negotiable in the build
+## donna, the domain broker assistant
+
+donna answers: i want this domain and it's taken; can i get it
+cheaply? she's a pipeline, not a one-shot answer, and the buyer
+dashboard shows each step as it happens: what's being checked, what's
+been ruled out, what she's waiting on.
+
+the pre-check reads the registration state (registrar, dates, status
+codes like redemptionperiod and pendingdelete), the dns shape (a real
+mailbox or a forwarding hobby setup, parked or dormant nameservers),
+the website if any (parked, for-sale with asking price, placeholder,
+or live and active, judged from content and freshness signals), the
+wayback history, and public mentions from github and the web. contact
+routes are counted and never shown before the buyer pays. every
+verdict traces back to cited, dated sources.
+
+the outreach is polite by construction, not by policy
 (donna-spec.md §2):
 
 - donna always says she is an ai acting for a buyer. never a human.
+- the first message is plain text, 80 words or fewer, no links, no
+  images, no tracking pixels (donna-spec.md §8.1).
 - one first message and one follow-up per contact channel. then stop,
   forever. at most 3 routes, 2 messages per route, 6 messages in total
   per deployment.
 - an opt-out on any route ends the whole campaign, and the suppression
   list is permanent and shared across all buyers: say no once, and no
   buyer can ever send donna back.
-- no pressure tactics, no invented competing offers, no flattery about
-  the domain's value.
 - a real postal address in every message, as can-spam requires.
+- cold outreach never comes from the brand domain; sending reputation
+  is protected as deliberately as the outreach is polite.
 
-no model weights decide to try harder. the campaign ends because the
-code says it ends.
+the negotiation runs inside limits you set: an opening offer
+(defaulting to about 60% of your maximum), at most two counters in
+shrinking steps (25% then 15% of the remaining gap,
+src/core/negotiation.ts on the donna branch), and a hard ceiling that
+is never revealed and never exceeded. if the seller's ask goes above
+it, she stops and hands the thread to you. the suggested closing
+order is transfer first, payment second, with registrar walkthroughs
+and rdap monitoring until the registrant changes. when a campaign
+ends without a deal, the expiry watch follows the domain to its drop
+date and tells you when to backorder.
 
-## what you get
-
-- **the free pre-check.** a usage status, who likely holds it, contact
-  routes counted, an estimated chance of success, a suggested price
-  band. about $0.01 to run, so it can be honest and free.
-- **the deployment.** $4.49, one campaign. donna works the routes in
-  priority order, gated by confidence in each owner match.
-- **the negotiation.** opening offer, at most two shrinking counters,
-  a final offer at your ceiling. a hard maximum she never reveals and
-  never exceeds.
-- **the closing.** written terms to both sides, transfer before
-  payment, registrar walkthroughs, rdap monitoring until the domain
-  moves. $3.99 only when the deal actually closes.
-- **the timeline.** every state change, timestamped, shown to you. if
-  nothing comes back, you see exactly what was tried and when.
-- **the fallback.** no deal: the expiry watch tracks the domain to the
-  drop.
-
-and you are never in the money flow with us. you pay the seller
-directly, through paypal, wise, or whatever you both agree. dear
-domain charges its two fees and touches nothing else, which is why
-there's no escrow theater and no money-transmitter fine print.
-
-## one search, every name
-
-before donna asks anyone for anything, the free hack finder checks
-whether a better answer is available now: your word split across all
-1,437 delegated endings (data.iana.org), each split scored for whether
-it works as a name, not just as a url. does the dot fall at a natural
-break? does the dotless twin belong to someone flagged for abuse? will
-chat apps even autolink it? does it read cleanly as an email address?
-can you say it aloud and have someone type it right? does the ending
-look like a file that triggers security filters?
-
-and it tells the truth about endings that sales pages don't: which
-countries require local presence, which endings are sanctioned or
-browser-flagged, which registries only sell under a second level, what
-the renewal costs after the sale price, and how google treats each
-country code for search. the risk data is thetldradar's, a cited
-public dataset, kept exactly as published (donna-spec.md §12.5). web3
-names exist behind an off-by-default toggle, labeled for what they
-are: they don't open in a normal browser and can't take normal email.
-
-available? a registrar link. taken? "want it anyway? have donna ask
-the owner for $4.49."
+you are never in the money flow with us. you pay the seller directly,
+through paypal, wise, or whatever you both agree. deardomain charges
+its flat fees and touches nothing else, which is why there's no
+escrow theater and no money-transmitter fine print.
 
 ## who it is for
 
@@ -155,12 +147,14 @@ exact right name, found it parked under a privacy wall, and has a
 budget in coffee money, not broker retainers. everyone below is
 welcome, in the order their pain arrives.
 
-- **the maker with the taken name.** the pre-check says whether it's
-  worth asking and what to offer. most of the time it isn't, and that
-  answer is free.
-- **the hack hunter.** the finder does the splitting, scoring and
+- **the maker with the taken name.** donna's pre-check says whether
+  it's worth asking and what to offer. most of the time it isn't, and
+  that answer is free.
+- **the hack hunter.** dom does the splitting, scoring and
   truth-telling about endings, so the clever name you found doesn't
-  come with a renewal surprise or a geotargeting footnote.
+  come with a renewal surprise or a geotargeting footnote. when the
+  perfect split is taken anyway, the same results page leads into
+  donna's ask-the-owner service.
 - **the returner.** you let a name lapse once. the expiry watch means
   it never happens silently again.
 - **the consolidator.** you own the .com, you want the .net and the
@@ -183,6 +177,8 @@ flags all three and hands them back (donna-spec.md §9, §13).
 - some registrars lock transfers for 60 days after a registration or
   registrant change. donna detects it and tells both sides
   (donna-spec.md §10).
+- dom's default coverage is latin-script only; web3 and punycode hacks
+  sit behind labeled, off-by-default toggles.
 - donna won't chase web3 names in v1, won't send automated social dms
   ever, and won't contact anyone on the suppression list.
 - she is an ai, in every message, by law and by preference. california
@@ -192,8 +188,8 @@ flags all three and hands them back (donna-spec.md §9, §13).
 ## about the name
 
 every outreach message is, literally, a letter to a domain: dear
-domain, someone wants you. donna signs it. the brand lives in the
-names, not in the spelling of the address, so the brand can move house
-without breaking anything it promised (donna-spec.md §1).
-
-pricing beyond the two fees: to be set at launch.
+domain, someone wants you. donna signs it. dom is the domain in every
+hack. and the product's own address, deardoma.in, is a domain hack
+itself, which is the short version of the whole pitch. the brand lives
+in the names, not in the spelling of the address, so the brand can
+move house without breaking anything it promised (donna-spec.md §1).

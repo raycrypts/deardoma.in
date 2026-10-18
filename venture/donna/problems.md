@@ -3,10 +3,10 @@ title: problems
 status: draft, waits in review
 ---
 
-# the problems dear domain targets
+# the problems donna targets
 
 one file, one list: every pain here is something a buyer can name in a
-sentence. each entry is the pain, then the service's answer to it.
+sentence. each entry is the pain, then the assistant's answer to it.
 
 ## the name i want is parked
 
@@ -25,18 +25,19 @@ free.
 
 every broker's playbook is written for the professional: the domainer
 with a portfolio, the priced-to-sell landing page, the leverage
-negotiation. so the minimum fee starts around $199 (donna-spec.md §1)
+negotiation. so the minimum fee starts around $199 (root README.md)
 and everything below that has no market at all. but the typical unused
 domain isn't held by a professional. it's held by a person with one
 name, who forgot it was renewing, and who would take $30 and feel
 clever about it.
 
 the answer: the pre-check's whole job is telling the two apart. the
-forgot-they-owned-it shows a forwarding mailbox, a dead github project,
-a wayback trail that stops. the professional shows a marketplace
-landing page and a listed price, which is detected and shown as what
-it is (donna-spec.md §5.3, §5.7). the pitch, the tone and the price are
-sized for the person, and the pro is handed back instead of played.
+forgot-they-owned-it shows a forwarding mailbox, a dead github
+project, a wayback trail that stops. the professional shows a
+marketplace landing page and a listed price, which is detected and
+shown as what it is (donna-spec.md §5.3, §5.7). the pitch, the tone
+and the price are sized for the person, and the pro is handed back
+instead of played.
 
 ## i don't know what to offer
 
@@ -73,12 +74,12 @@ message, because it's true and because california requires bots in
 sales conversations to disclose (donna-spec.md §13; needs full read
 before publishing). no links in the first message. a real postal
 address, as can-spam requires. the buyer pays the seller directly
-through a normal payment method; dear domain never touches the money.
+through a normal payment method; deardomain never touches the money.
 an owner who wants out says one word and is suppressed permanently
 across every buyer. and when the evidence for who owns the domain is
-thin, the first message asks "are you the owner?" instead of making an
-offer (confidence gates at 0.7 and 0.4, src/core/contact-routes.ts on
-the donna branch).
+thin, the first message asks "are you the owner?" instead of making
+an offer (confidence gates at 0.7 and 0.4, src/core/contact-routes.ts
+on the donna branch).
 
 ## they said no and now it's awkward to keep watching
 
@@ -89,17 +90,3 @@ the answer: the expiry watch. rdap status checked daily as the expiry
 date approaches, and when the domain enters pendingdelete, you get
 pointed at backorder and drop-catching services. no response isn't a
 dead end; it's a calendar entry.
-
-## every good word on .com is taken
-
-you wanted a name, not a lawsuit with a hyphen. the aftermarket is a
-bazaar and the registrars only sell what's left.
-
-the answer: the free hack finder splits your word across all 1,437
-delegated endings (data.iana.org) and tells the truth about each one:
-local-presence rules, sanctioned or browser-flagged endings, registries
-that only sell under a second level, renewal prices after the sale
-price, google's generic-vs-geotargeted treatment. a hack that will cost
-you a trustee fee and a geotargeting penalty is found out before the
-checkout, not after. and if the split is taken anyway, "have donna ask
-the owner for $4.49" is right there in the results.
