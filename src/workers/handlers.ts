@@ -1,10 +1,21 @@
 import { promises as dns } from "node:dns";
 import { pool } from "../db.js";
+import { config } from "../config.js";
 import { classifyReplyPlaceholder } from "../core/intents.js";
 import { classifyPurgatory, DROPPED } from "../core/purgatory.js";
 import { fetchRdap } from "../core/history/rdap.js";
 import { historySignals } from "../core/history/index.js";
 import { viability } from "../core/viability.js";
+import { classifyWebsite, fetchWebsite } from "../core/website.js";
+import { fetchWayback, PLATFORM_SUBDOMAIN_THRESHOLD } from "../core/wayback.js";
+import { githubMentions, tavilyMentions } from "../core/mentions.js";
+import { emailReachability } from "../core/email.js";
+import {
+  inUseScore,
+  usageStatus,
+  reachabilityScore,
+  estimatedSuccessChance,
+} from "../core/scores.js";
 
 type Payload = Record<string, unknown>;
 
@@ -111,22 +122,119 @@ async function precheck(payload: Payload) {
   } catch (e) {
     result.history = { locked: `unavailable: ${(e as Error).message}`, skipped: [], errors: [] };
   }
-  // TODO 5.3 website: firecrawl fetch + classification (parked / for sale /
-  //      default page / placeholder / live) + activity signals.
-  // TODO 5.4 wayback: snapshot count, first/last dates.
-  // TODO 5.5 github + public mentions: github api (repos, code, pages cname files),
-  //      tavily web search, querit deep research for candidate owners + confidence.
-  // TODO 5.6 email checks: dedicated smtp checker or verification api (catch-all
-  //      test, common local parts; never abuse/postmaster; never from sending servers).
-  result.pending = [
-    "website",
-    "wayback",
-    "public_mentions",
-    "email_checks",
-  ];
+  // 5.3 website (real): fetch + classify (parked / for_sale / default_page /
+  //     placeholder / live), harvest emails + contact forms
+  let web: ReturnType<typeof classifyWebsite> = {
+    classification: "no_site", emails: [], contactForm: false, textLength: 0, title: null,
+  };
+  try {
+    const html = await fetchWebsite(
+      fqdn,
+      config.research.firecrawl ? process.env.FIRECRAWL_API_KEY : undefined
+    );
+    web = classifyWebsite(html);
+    result.website = web;
+  } catch (e) {
+    result.website = { error: (e as Error).message };
+  }
 
-  // TODO 5.7: in_use_score / reachability_score / estimated success once the
-  //      pipeline steps land. cached 24h per domain.
+  // 5.4 wayback (real, free): snapshot history + subdomain breadth. the
+  //     breadth doubles as the structural platform detector: a domain with
+  //     mass archived subdomains is product infrastructure other people
+  //     depend on (lu.ma model) — hands up, no charge.
+  try {
+    const wb = await fetchWayback(fqdn);
+    result.wayback = wb;
+    if (wb.distinctSubdomains >= PLATFORM_SUBDOMAIN_THRESHOLD) {
+      result.hands_up = {
+        refusal: "platform_domain",
+        reason: `structural evidence: ${wb.distinctSubdomains} distinct archived subdomains — this domain is product infrastructure other people depend on; putting my hands up, no charge`,
+        charged: false,
+      };
+      await pool.query(
+        `update prechecks set status = 'done', result = $2 where id = $1`,
+        [precheckId, result]
+      );
+      await recordEvent("precheck_refused", { fqdn, refusal: "platform_domain", structural: true, charged: false }, { domainId });
+      return;
+    }
+  } catch (e) {
+    result.wayback = { error: (e as Error).message };
+  }
+
+  // 5.5 public mentions (real): github repos + tavily web (key-gated)
+  try {
+    const mentions = { githubRepos: 0, githubSample: [] as string[], webMentions: 0, webSample: [] as string[], skipped: [] as string[] };
+    try {
+      const gh = await githubMentions(fqdn);
+      mentions.githubRepos = gh.total;
+      mentions.githubSample = gh.sample;
+    } catch (e) {
+      mentions.skipped.push(`github: ${(e as Error).message}`);
+    }
+    if (config.research.tavily) {
+      try {
+        const wv = await tavilyMentions(fqdn, process.env.TAVILY_API_KEY!);
+        mentions.webMentions = wv.total;
+        mentions.webSample = wv.sample;
+      } catch (e) {
+        mentions.skipped.push(`tavily: ${(e as Error).message}`);
+      }
+    } else {
+      mentions.skipped.push("tavily: no key");
+    }
+    result.public_mentions = mentions;
+  } catch (e) {
+    result.public_mentions = { error: (e as Error).message };
+  }
+
+  // 5.6 email checks (real, passive): harvested emails + mx hosts; active
+  //     mailbox probing waits for a dedicated verification service
+  const email = await emailReachability(fqdn, web.emails ?? []);
+  result.email_checks = email;
+
+  // 5.7 scores (real): fold every signal into the two product scores
+  const purgatoryStage = (result.purgatory as { stage?: string } | undefined)?.stage ?? "ok";
+  const dnsHistory = (result.history as { dns?: { longTermParked?: boolean } } | undefined)?.dns;
+  const ownership = (result.history as {
+    ownership?: { signals?: { recently_changed_hands?: boolean } };
+  } | undefined)?.ownership;
+  const useScore = inUseScore({
+    website: web.classification,
+    wayback: (result.wayback ?? { recentActivity: false, distinctSubdomains: 0 }) as never,
+    mxProvider: (result.dns as { mxProvider?: string } | undefined)?.mxProvider ?? null,
+    purgatory: purgatoryStage as never,
+    ownership: ownership
+      ? { recentlyChangedHands: !!ownership.signals?.recently_changed_hands }
+      : undefined,
+    dns: dnsHistory as never,
+  });
+  const reach = reachabilityScore({
+    emails: email.harvested,
+    contactForm: web.contactForm,
+    mxProvider: (result.dns as { mxProvider?: string } | undefined)?.mxProvider ?? null,
+    privacy: (result.registration_data as { privacy?: boolean } | undefined)?.privacy ?? false,
+    registrar: (result.registration_data as { registrar?: string } | undefined)?.registrar ?? null,
+  });
+  const usage = usageStatus(useScore);
+  result.scores = {
+    in_use_score: useScore,
+    reachability_score: reach,
+    usage_status: usage,
+    estimated_success_chance: estimatedSuccessChance(useScore, reach),
+  };
+  await pool.query(
+    `update domains set in_use_score = $2, reachability_score = $3, last_prechecked_at = now() where id = $1`,
+    [domainId, useScore, reach]
+  );
+  await pool.query(
+    `update prechecks set usage_status = $2, contact_routes_found = $3 where id = $1`,
+    [precheckId, usage, email.harvested.length + (web.contactForm ? 1 : 0)]
+  );
+
+
+  // results are cached by the precheck row itself; re-prechecks within 24h
+  // short-circuit at the api layer (spec 5.7 caching).
   await pool.query(
     `update prechecks set status = 'done', result = $2 where id = $1`,
     [precheckId, result]

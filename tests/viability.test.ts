@@ -6,7 +6,7 @@ test("lu.ma: platform domain, hands up, no charge", () => {
   const v = viability("lu.ma");
   assert.equal(v.viable, false);
   assert.equal(v.refusal, "platform_domain");
-  assert.ok(v.reason.includes("would break"));
+  assert.ok(v.reason?.includes("would break"));
   assert.equal(v.charged, false);
 });
 
@@ -18,14 +18,14 @@ test("platform subdomains don't slip past (event.lu.ma)", () => {
 test("registry-essential names are reserved by the registry (nic.sh)", () => {
   const v = viability("nic.sh");
   assert.equal(v.refusal, "registry_reserved");
-  assert.ok(v.reason.includes("registry's own infrastructure"));
+  assert.ok(v.reason?.includes("registry's own infrastructure"));
   assert.equal(v.charged, false);
 });
 
 test("third-level-only registries: foo.il can never be owned", () => {
   const v = viability("foo.il");
   assert.equal(v.refusal, "third_level_only");
-  assert.ok(v.reason.includes("never a .il root"));
+  assert.ok(v.reason?.includes("never a .il root"));
   // co.il is ALSO an unownable root (the registrable form is example.co.il)
   const alsoRoot = viability("co.il");
   assert.equal(alsoRoot.refusal, "third_level_only");
