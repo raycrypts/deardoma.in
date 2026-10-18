@@ -1,4 +1,6 @@
-# domain lifecycle: what happens after a domain stops being renewed
+# domain purgatory: what happens after a domain stops being renewed
+
+(domain lifecycle is the industry term; in-house we call this walk **domain purgatory**. use the in-house name in product copy and code.)
 
 research doc for donna and dom. every claim carries its source. implementation comes later; this is the dataset of record.
 
@@ -45,6 +47,8 @@ practical consequence: an expired domain often never reaches the open drop. it i
 - domain age from whois creation date already exists; the "change of hands" check needs whois history (see research/history-providers.md): a domain whose registrant changed recently is likelier to be a reseller (price expectation up) than a forgotten hobby owner (price expectation down).
 
 ## what dom does with this (design notes, implement later)
+
+- purgatory depth is a paid signal. the free tier classifies only what rdap exposes (status codes, dates); deeper purgatory detail and whois history (research/history-providers.md) run only inside donna's paid pre-check.
 
 - availability checks already read rdap; extend the response with lifecycle stage for *taken* names so the finder can say "taken, but expires in N days" instead of just "taken".
 - the "want it anyway" handoff to donna should carry the stage: an expired-grace domain leads to an auction-watch suggestion rather than an owner-contact campaign.
