@@ -2,6 +2,7 @@ import type { FastifyInstance } from "fastify";
 import { pool } from "../../db.js";
 import { openingFor } from "../../core/negotiation.js";
 import { reservedReason } from "../../core/reserved.js";
+import { viability } from "../../core/viability.js";
 
 interface CreateCampaignBody {
   domainId?: number;
@@ -33,7 +34,11 @@ export async function campaignRoutes(app: FastifyInstance) {
       const tld = fqdn.split(".").pop() ?? "";
       const reserved = reservedReason(tld);
       if (reserved) {
-        return reply.code(400).send({ error: reserved });
+        return reply.code(400).send({ error: reserved, refused: "reserved_mission", charged: false });
+      }
+      const v = viability(fqdn);
+      if (!v.viable) {
+        return reply.code(400).send({ error: v.reason, refused: v.refusal, charged: false });
       }
       const r = await pool.query(
         `insert into domains (fqdn, tld) values ($1, $2)

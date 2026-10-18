@@ -4,6 +4,7 @@ import { classifyReplyPlaceholder } from "../core/intents.js";
 import { classifyPurgatory, DROPPED } from "../core/purgatory.js";
 import { fetchRdap } from "../core/history/rdap.js";
 import { historySignals } from "../core/history/index.js";
+import { viability } from "../core/viability.js";
 
 type Payload = Record<string, unknown>;
 
@@ -49,6 +50,19 @@ async function precheck(payload: Payload) {
   ]);
   const fqdn: string = rows[0].fqdn;
   const result: Record<string, unknown> = {};
+
+  // viability belt: domains can enter via paths that predate a list update;
+  // refuse inside the worker too, before any metered lookup, and never charge
+  const v = viability(fqdn);
+  if (!v.viable) {
+    result.hands_up = { refusal: v.refusal, reason: v.reason, charged: false };
+    await pool.query(
+      `update prechecks set status = 'done', result = $2 where id = $1`,
+      [precheckId, result]
+    );
+    await recordEvent("precheck_refused", { fqdn, refusal: v.refusal, charged: false }, { domainId });
+    return;
+  }
 
   // 5.2 dns (real): mx + ns records, provider classification
   try {
