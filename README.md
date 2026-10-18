@@ -1,28 +1,26 @@
-# domainhacks — backend
+# domainhacks — the domain hack finder backend
 
-the domain hack finder, backend only. scope: `SCOPE.md`. orphan-rooted `domainhacks` branch in `tinkrland/deardomain` — no shared history with the `donna` branch (which holds the master spec and the agent backend).
+the domain hack finder behind **dear domain**: type a word or phrase, get
+hack splits (`delicio.us`, `sees.me`, `bla.xyz`) with availability, a price
+estimate, the tld type (cctld / gtld / sponsored / web3), registration
+restrictions and a risk radar per ending. an off-by-default toggle surfaces
+web3 hacks (`te.eth`, `rela.x`).
 
-## run
+this is the **finder backend**: a json api over a postgres-backed job
+queue. it powers the dear domain **web app and cli** — the product is
+delivered as a web saas plus a cli client, and this service is what both of
+them talk to. the free finder is the top of the funnel: available names get
+a registrar affiliate link, taken ones lead into donna's paid outreach.
 
-```sh
-docker compose -f docker-compose.base44.yml up -d
-```
+key surfaces: `GET /api/hacks?keyword=&web3=0|1` and `GET /api/tlds` —
+api-only, json responses, no frontend in this repo.
 
-api on http://localhost:3000 (bind-mounted source, `tsx watch` live reload; deps install at container start).
+tld policy is researched and cited: which ccTLDs are actually purchasable
+(open vs local-presence vs residency vs closed), platform flags (sanctioned
+or browser-flagged endings), and google's generic-vs-geotargeted ccTLD
+treatment. see `SCOPE.md` and `src/core/tld-meta.ts`.
 
-```sh
-curl localhost:3000/health
-curl 'localhost:3000/api/hacks?keyword=delicious'
-curl 'localhost:3000/api/hacks?keyword=teeth&web3=1'   # web3 toggle on
-curl localhost:3000/api/tlds
-```
-
-## tests
-
-```sh
-docker compose -f docker-compose.base44.yml exec api npm test
-```
-
-## research integrations
-
-querit + firecrawl + tavily etc. — see SCOPE.md. keys are optional env vars delivered via `/run/base44/app.env`; nothing is required to boot.
+orphan-rooted `domainhacks` branch in `tinkrland/deardomain` — no shared
+history with the `donna` branch (which holds the master product spec,
+`donna-spec.md`, and the agent backend). for development conventions and
+the dev environment, see `AGENTS.md` and `docker-compose.yml`.
