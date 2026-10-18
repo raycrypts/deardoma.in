@@ -1,12 +1,12 @@
 # domain history providers: whoisfreaks, whoisxml api, securitytrails
 
-research doc. these are third-party apis for past-ownership and past-dns evidence: how a domain changed hands, whether it has been through redemption/pendingDelete before, and what its dns looked like over time. build-time research sources now, candidate integrations later; none are production dependencies.
+research doc. these are third-party apis for past-ownership and past-dns evidence: how a domain changed hands, whether it has been through redemption/pendingDelete before, and what its dns looked like over time. build-time research sources; integrated 2026-10-18 into donna's paid pre-check (branch donna, commit decd605): src/core/purgatory.ts (free rdap stage classification), src/core/history/whois-history.ts (whoisfreaks v2.0 + whoisxml), src/core/history/dns-history.ts (securitytrails), key-gated via WHOISFREAKS_API_KEY / WHOISXML_API_KEY / SECURITYTRAILS_API_KEY, locked for free pre-checks.
 
 ## whoisfreaks
 
 source: whoisfreaks.com/products/whois-history-api and whoisfreaks.com/products/expiring-dropped-domains, scraped 2026-10-18.
 
-- **whois history api**: "complete ownership timeline of any domain covering every registrar change, registrant update, nameserver modification, and expiry event, going back to 1986." endpoints look like `GET /v1.0/whois/history?domainName=example.com`, with mode switches for forward/reverse lookups and live + historical whois.
+- **whois history api**: "complete ownership timeline of any domain covering every registrar change, registrant update, nameserver modification, and expiry event, going back to 1986." endpoint is `GET https://api.whoisfreaks.com/v2.0/whois/history?domainName=example.com&apiKey=..` (v2.0, corrected 2026-10-18 from the product page), with mode switches for forward/reverse lookups and live + historical whois.
 - **expiring / dropped domains feeds**: daily programmatic access to three feeds: expiring domains (pre-drop), dropped domains (just released), and pending-delete domains (final countdown). this is the auction/drop-watch input: instead of polling rdap for every watch, consume the daily feed and match against the watch list.
 - free tier exists (limited lookups/month), then per-lookup pricing. api key auth, simple GET, json back.
 
