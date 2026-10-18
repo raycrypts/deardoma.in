@@ -12,6 +12,9 @@ the domain hack finder, split out of the master spec (donna-spec.md §12) onto t
 - tld risk radar (spec 12.5): read-only sync of the existing **thetldradar** dataset (github.com/tinkrland/themailtell, `thetldradar` branch) — citations + dates kept exactly as published; licensing/credit is an open question (spec 20) before anything public shows it
 - hack fit score (spec 12.5.1): donna's own view of whether a hack works as a name (split naturalness, dotless twin, file-extension clash, autolinking, email fit...) — partial
 - search impact note (spec 12.6): google-treats-as-generic
+- lifecycle awareness (research/domain-lifecycle.md): rdap status classified into stages (auto-renew grace / redemption / pending delete); taken-but-expiring is a watch, not a dead end
+- tld reputation (research/tld-reputation.md): abuse-class prior per tld (clean / ordinary / elevated / high) shown in compare mode, snapshot-dated
+- punycode + web3 behind off-by-default toggles (research/punycode-idn.md); default coverage is latin-alphabet only
 - web3 names (spec 12.7): ens + unstoppable lookups, only when the toggle is on
 
 ## out of scope (for now)

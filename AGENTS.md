@@ -23,3 +23,10 @@ QUERIT_API_KEY / FIRECRAWL_API_KEY / TAVILY_API_KEY — see SCOPE.md. delivered 
 - per-tld verdicts are per-registry research: namebeta.com/tlds/<tld> pages (eligibility + registrar price comparison) cross-checked against registry policy pages; a registry-direct citation wins on conflict. rows marked verified:false are bulk-sourced (IANA root db / wikipedia) and rank below verified rows.
 - prices are the cheapest registration/renewal observed across namebeta's registrar comparison, recorded as ballpark usd — verify before launch.
 - the suggestion filter (`suggestibleTlds`) excludes: web3 unless toggled, not publicly registrable endings, and third-level-only registries (root registrations not offered, e.g. .il only sells co.il). `excludedHacks` returns those matches with a reason — keep that contract intact.
+
+## research docs (product knowledge, implement later)
+- `research/domain-lifecycle.md`: expiry -> auto-renew grace -> redemption (30d) -> pendingDelete (5d) -> drop; registrar auctions/closeouts/drop-catch in between; epp status semantics; ccTLDs don't follow the gTLD timeline. design notes for donna (stage classification, auction-watch) and dom (taken-but-expiring).
+- `research/history-providers.md`: whoisfreaks (ownership timeline to 1986, expiring/pending-delete feeds), whoisxml api (whois history + monitors), securitytrails (dns history, parking-infra dating). signals: recently_changed_hands, serial_lapser, registrar_hopper.
+- `research/tld-reputation.md`: interisle 2025 (new gtlds = 11% of market, 51% of reported phishing), dnsrf, cybercrime infocenter quarterly tables, spamhaus worst-tlds. abuse tracks price pressure + barrier, not category alone; wiring notes for compare mode.
+- `research/punycode-idn.md`: punycode/homograph risks, idn ccTLDs, web3 namespaces (ens/ud/handshake) and what browsers actually resolve; both toggles are off by default, latin-only default coverage.
+- `research/closed-cctlds.md`: the delegated-but-unavailable class (never opened / third-level only / institution-closed / sanctioned), how the filter and excludedHacks treat each.
