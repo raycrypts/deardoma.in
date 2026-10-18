@@ -24,8 +24,11 @@ micro-brands, where a $199-minimum broker or a $2,000 aftermarket
 listing is nonsense (root README.md). the broker's minimum fee is
 the market's entry barrier, and removing it is the point of the
 product: flat fee per attempt, flat fee on completion, no commission
-on the buying cost, so the product's only incentive is getting you
-the domain at the cheapest price possible. and nothing recurs.
+on the buying cost. and where the broker's commission is a fee for
+paying too much, a percentage that rises with your bill, the flat
+fee has no direction to run: we get paid the same whether the
+domain closes at $10 or at your ceiling, so the product's only
+incentive is getting you the domain at the cheapest price possible. and nothing recurs.
 there is no subscription, no monthly charge, no seat, no upsell
 standing between you and the exit. you pay when you act, and only
 when you act. exact rates are set at launch. the discovery tools
@@ -73,7 +76,11 @@ weeks. that assumption sets the entry barrier the whole market is
 named after: a broker's time is expensive, so the minimum fee starts
 around $199 (root README.md) and everything below it, every
 micro-deal a normal person actually wants, has no market at all. the
-barrier isn't the sellers. it's the tollbooth.
+barrier isn't the sellers. it's the tollbooth. and the tollbooth
+charges a percentage: a broker on commission earns more the more
+you pay, so the industry's own fee structure points the incentive
+at the buyer's wallet. the flat fee points nowhere. we have no
+reason not to get you the cheapest deal.
 
 the assumption is also wrong for most of the market. the typical
 unused domain is held by a person with one name: the side project that

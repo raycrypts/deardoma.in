@@ -43,7 +43,10 @@ and the fee that exists to break the barrier is flat and one-time:
 you pay for an attempt, and if nothing comes of it, nothing keeps
 charging you. no subscription, no retainer, no seat. the $199 broker
 and the monthly-billed toolkit both put a tollbooth on a $30
-decision; the flat fee is the tollbooth removed.
+decision; the flat fee is the tollbooth removed. and a broker takes
+a commission on top of the deal, which means the more you pay, the
+more they earn: the incentive points at your wallet. the flat fee
+points nowhere. your cheap deal is not our loss.
 
 ## i don't know what to offer
 
