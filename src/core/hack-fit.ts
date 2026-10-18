@@ -103,13 +103,21 @@ export function hackFit(
     fqdn: string;
     label: string;
     tld: string;
+    prefix?: string;
     dotCount: number;
+    hackKind?: "label" | "subdomain" | "chain";
   },
   fileExt?: { severity: "high" | "medium" | null; note: string | null }
 ): HackFit {
   const reasons: string[] = [];
   if (c.dotCount > 1) {
-    reasons.push("extra dots: only the registrable part is owned long-term");
+    if (c.hackKind === "chain") {
+      reasons.push(
+        `chain: every segment is a real tld (${c.prefix}, ${c.label}, ${c.tld}) — you own only the base ${c.label}.${c.tld}; the segment above is a subdomain you control`
+      );
+    } else {
+      reasons.push("extra dots: only the registrable part is owned long-term");
+    }
   }
   const ext = fileExt ?? FILE_EXT.get(c.tld) ?? null;
   const clash = ext != null;

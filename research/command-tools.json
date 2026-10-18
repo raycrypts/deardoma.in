@@ -1,0 +1,5 @@
+{
+  "note": "well-known cli commands/tools, curated for dom's command-axis detection: a hack like brew.sh reads as a dev command + script suffix, not as a word completion. extend with care and verify against official docs before adding.",
+  "accessed": "2026-10-18",
+  "tools": ["brew","curl","wget","git","npm","npx","yarn","pnpm","pip","pip3","conda","docker","podman","kubectl","helm","terraform","ansible","vagrant","make","cmake","ninja","cargo","rustc","go","node","deno","bun","python","python3","ruby","php","lua","perl","bash","zsh","fish","awk","sed","grep","find","tar","zip","unzip","ssh","scp","rsync","vim","emacs","nano","jq","yq","http","aws","gcloud","az","k9s","tmux","screen","ffmpeg","magick","sqlite","psql","mysql","redis","mongosh","dotnet","java","gradle","mvn","swift","dart","flutter","adb","tldr","man","cat","less","head","tail","sort","uniq","cut","xargs","watch","sudo","env","echo","yes","date","time","sleep","ps","top","htop","kill","ping","dig","whois","traceroute","ss","ip","netstat","ifconfig","chown","chmod","ln","cp","mv","rm"]
+}

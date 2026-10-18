@@ -1,12 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  classifyChain,
   excludedHacks,
   generateHacks,
+  hackAxis,
   normalizeKeyword,
   rankCandidates,
   suggestibleTlds,
 } from "../src/core/candidates.js";
+import { hackFit } from "../src/core/hack-fit.js";
 
 test("normalize strips spaces/punctuation and lowercases", () => {
   assert.equal(normalizeKeyword("  De li.ciOUS! "), "delicious");
@@ -179,4 +182,93 @@ test("say-it-aloud feeds the ranking: runn.ing outranks runni.ng", () => {
   );
   assert.equal(ranked[0].fqdn, "runn.ing");
   assert.equal(ranked[1].fqdn, "runni.ng");
+});
+
+// reserved-mission endings (spec 12.3): dom and donna can NEVER suggest
+// .gov/.mil/.edu/.int, regardless of what any research row claims
+test("reserved-mission endings are never suggestible, even if data drifts open", () => {
+  const drifted = new Map([
+    ["gov", { registrablePublicly: true, restriction: "none", restrictionVerified: true } as never],
+    ["edu", { registrablePublicly: true, restriction: "none", restrictionVerified: true } as never],
+    ["io", { registrablePublicly: true, restriction: "none", restrictionVerified: true } as never],
+  ]);
+  const tlds = suggestibleTlds(drifted, false);
+  assert.ok(!tlds.includes("gov"), ".gov must never be suggestible");
+  assert.ok(!tlds.includes("edu"), ".edu must never be suggestible");
+  assert.ok(tlds.includes("io"));
+});
+
+test("full seed: reserved-mission endings carry the flag and the exclusion", async () => {
+  const { TLD_META_SEED } = await import("../src/core/tld-meta-seed.generated.js");
+  for (const tld of ["gov", "mil", "edu", "int"]) {
+    const m = TLD_META_SEED.find((r) => r.tld === tld);
+    assert.ok(m, `.${tld} in seed`);
+    assert.equal(m.registrablePublicly, false, `.${tld} closed`);
+    assert.ok((m.flags ?? []).includes("reserved_mission"), `.${tld} flag`);
+  }
+  const meta = new Map(TLD_META_SEED.map((m) => [m.tld, { registrablePublicly: m.registrablePublicly, restriction: m.restriction, tldType: m.tldType, secondLevelRegistrable: m.secondLevelRegistrable } as never]));
+  const sugg = suggestibleTlds(meta, false);
+  for (const tld of ["gov", "mil", "edu", "int"]) {
+    assert.ok(!sugg.includes(tld), `.${tld} never suggested`);
+  }
+  const ex = excludedHacks("savegov", meta, false);
+  const gov = ex.find((e) => e.tld === "gov");
+  assert.ok(gov, "save.gov surfaces in excluded");
+  assert.ok(gov.reason.startsWith("reserved-mission"), "reserved reason given");
+});
+
+// hack axes (spec 12.2): linguistic (tra.sh completes "trash") vs command
+// (brew.sh reads as homebrew + shell script)
+test("command axis: brew.sh reads as a command hack, tra.sh stays linguistic", () => {
+  const m = { fileExtSeverity: "high" as const };
+  assert.equal(hackAxis({ label: "brew", tld: "sh", dotCount: 1 }, m), "command");
+  assert.equal(hackAxis({ label: "tra", tld: "sh", dotCount: 1 }, m), "linguistic");
+  // a command-looking label on a non-file tld is still linguistic
+  assert.equal(hackAxis({ label: "brew", tld: "io", dotCount: 1 }, { fileExtSeverity: null }), "linguistic");
+});
+
+test("command hacks waive the file-extension penalty: brew.sh outranks tra.sh", () => {
+  const meta = new Map([
+    ["sh", { registrablePublicly: true, restriction: "none", restrictionVerified: true, fileExtSeverity: "high" as const }],
+  ]);
+  const ranked = rankCandidates(
+    [
+      { fqdn: "tra.sh", label: "tra", tld: "sh", dotCount: 1 } as never,
+      { fqdn: "brew.sh", label: "brew", tld: "sh", dotCount: 1 } as never,
+    ],
+    meta
+  );
+  assert.equal(ranked[0].fqdn, "brew.sh", "command hack first");
+  assert.equal(ranked[1].fqdn, "tra.sh", "linguistic hack keeps the clash penalty");
+});
+
+// multi-dot chains (spec 12.2): fi.ni.sh has every segment a real tld
+test("chain classification: fi.ni.sh is a chain, de.licio.us is a subdomain hack", () => {
+  const universe = new Set(["fi", "ni", "sh", "us", "de"]);
+  const chain = classifyChain(
+    { fqdn: "fi.ni.sh", label: "ni", tld: "sh", prefix: "fi", dotCount: 2, hackKind: "subdomain" } as never,
+    universe
+  );
+  assert.equal(chain.hackKind, "chain");
+  const sub = classifyChain(
+    { fqdn: "de.licio.us", label: "licio", tld: "us", prefix: "de", dotCount: 2, hackKind: "subdomain" } as never,
+    universe
+  );
+  assert.equal(sub.hackKind, "subdomain", "licio is not a tld");
+});
+
+test("finish generates the fi.ni.sh chain and the chain ownership reason", async () => {
+  const meta = new Map([
+    ["ni", { registrablePublicly: true, restriction: "none", restrictionVerified: true } as never],
+    ["sh", { registrablePublicly: true, restriction: "none", restrictionVerified: true } as never],
+  ]);
+  const hacks = generateHacks("finish", suggestibleTlds(meta, false)).map((c) =>
+    classifyChain(c, new Set([...meta.keys(), "fi"]))
+  );
+  const chain = hacks.find((h) => h.fqdn === "fi.ni.sh");
+  assert.ok(chain, "fi.ni.sh generated");
+  assert.equal(chain.hackKind, "chain");
+  const fit = hackFit(chain, { severity: null, note: null });
+  assert.ok(fit.reasons.some((r) => r.includes("chain: every segment is a real tld")), "chain reason");
+  assert.ok(fit.reasons.some((r) => r.includes("you own only the base ni.sh")), "ownership note");
 });

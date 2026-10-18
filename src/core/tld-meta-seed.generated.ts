@@ -6765,7 +6765,9 @@ export const TLD_META_SEED: TldMeta[] = [
     "typicalPrice": null,
     "renewalPrice": null,
     "rdapSupported": false,
-    "flags": [],
+    "flags": [
+      "reserved_mission"
+    ],
     "sourceUrl": "https://net.educause.edu/",
     "accessed": "2026-10-18",
     "verified": true,
@@ -9368,7 +9370,9 @@ export const TLD_META_SEED: TldMeta[] = [
     "typicalPrice": null,
     "renewalPrice": null,
     "rdapSupported": false,
-    "flags": [],
+    "flags": [
+      "reserved_mission"
+    ],
     "sourceUrl": "https://home.dotgov.gov/",
     "accessed": "2026-10-18",
     "verified": true,
@@ -11128,7 +11132,9 @@ export const TLD_META_SEED: TldMeta[] = [
     "typicalPrice": null,
     "renewalPrice": null,
     "rdapSupported": false,
-    "flags": [],
+    "flags": [
+      "reserved_mission"
+    ],
     "sourceUrl": "https://www.iana.org/domains/int/",
     "accessed": "2026-10-18",
     "verified": true,
@@ -14266,7 +14272,9 @@ export const TLD_META_SEED: TldMeta[] = [
     "typicalPrice": null,
     "renewalPrice": null,
     "rdapSupported": false,
-    "flags": [],
+    "flags": [
+      "reserved_mission"
+    ],
     "sourceUrl": "https://en.wikipedia.org/wiki/.mil",
     "accessed": "2026-10-18",
     "verified": true,

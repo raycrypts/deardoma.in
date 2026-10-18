@@ -8,6 +8,7 @@ import {
   suggestibleTlds,
 } from "../core/candidates.js";
 import { hackFit } from "../core/hack-fit.js";
+import { classifyChain, hackAxis } from "../core/candidates.js";
 import { TLD_META_SEED, type TldMeta } from "../core/tld-meta.js";
 
 function rowToMeta(r: any): TldMeta {
@@ -118,7 +119,9 @@ async function main() {
     const web3 = q.web3 === "1" || q.web3 === "true";
     const meta = await loadTldMeta();
     const tlds = suggestibleTlds(meta, web3);
-    const candidates = generateHacks(keyword, tlds);
+    const candidates = generateHacks(keyword, tlds).map((c) =>
+      classifyChain(c, new Set(meta.keys()))
+    );
     const excluded = excludedHacks(keyword, meta, web3);
     const ranked = rankCandidates(candidates, meta);
     const results = ranked.map((c) => {
@@ -157,6 +160,7 @@ async function main() {
             : null,
         sourceUrl: m.sourceUrl ?? null,
         accessed: m.accessed ?? null,
+        hackAxis: hackAxis(c, m),
         hackFit: hackFit(c, {
           severity: m.fileExtSeverity ?? null,
           note: m.fileExtNote ?? null,
