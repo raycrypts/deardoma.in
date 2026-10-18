@@ -1,6 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { pool } from "../../db.js";
 import { openingFor } from "../../core/negotiation.js";
+import { reservedReason } from "../../core/reserved.js";
 
 interface CreateCampaignBody {
   domainId?: number;
@@ -30,6 +31,10 @@ export async function campaignRoutes(app: FastifyInstance) {
     if (!domainId && body.fqdn) {
       const fqdn = body.fqdn.toLowerCase().trim();
       const tld = fqdn.split(".").pop() ?? "";
+      const reserved = reservedReason(tld);
+      if (reserved) {
+        return reply.code(400).send({ error: reserved });
+      }
       const r = await pool.query(
         `insert into domains (fqdn, tld) values ($1, $2)
          on conflict (fqdn) do update set tld = excluded.tld returning id`,

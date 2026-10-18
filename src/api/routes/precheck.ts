@@ -1,5 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { pool } from "../../db.js";
+import { reservedReason } from "../../core/reserved.js";
 
 const DOMAIN_RE =
   /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/i;
@@ -12,6 +13,10 @@ export async function precheckRoutes(app: FastifyInstance) {
     }
     const fqdn = domain.toLowerCase().trim();
     const tld = fqdn.split(".").pop() ?? "";
+    const reserved = reservedReason(tld);
+    if (reserved) {
+      return reply.code(400).send({ error: reserved });
+    }
     const domainRes = await pool.query(
       `insert into domains (fqdn, tld) values ($1, $2)
        on conflict (fqdn) do update set tld = excluded.tld
