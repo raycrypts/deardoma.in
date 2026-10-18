@@ -27,3 +27,11 @@ scripts/gen-tld-seed.mjs. every row carries sourceUrl + accessed.
 - deep-verify the ~140 remaining restriction-unverified ccTLDs (rank-verified ones first)
 - confirm second-level registrability for the ~200 ccTLDs not yet in cctld-second-level.json
 - observe registrar prices for the top hack endings
+
+## namebeta per-registry pass (2026-10-18)
+- all 248 ccTLDs researched individually via namebeta.com/tlds/<tld> (eligibility text + registrar price comparison)
+- 208 rows upgraded from bulk-sourced to verified per-registry verdicts; registry-direct citations win on conflict (26 rows kept)
+- 233 rows now carry observed prices: cheapest registration + renewal usd across namebeta's registrar comparison
+- true closed-at-root set confirmed: .bv .er .gb .il .sj .va (norid's never-opened pair, dormant .gb, third-level-only .il, sanctioned .er, vatican .va)
+- corrections from the pass: .hm is open (old wiki note said closed), .li/.lu/.mn/.cd open (bulk pass said closed)
+- classifier pitfalls documented: reserved-names notes ("under three characters... cannot be registered") must not read as closed registry; "verification" over-flagged on trademark-protection mentions

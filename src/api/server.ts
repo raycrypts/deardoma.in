@@ -2,6 +2,7 @@ import Fastify from "fastify";
 import { config } from "../config.js";
 import { migrate, pool } from "../db.js";
 import {
+  excludedHacks,
   generateHacks,
   rankCandidates,
   suggestibleTlds,
@@ -115,6 +116,7 @@ async function main() {
     const meta = await loadTldMeta();
     const tlds = suggestibleTlds(meta, web3);
     const candidates = generateHacks(keyword, tlds);
+    const excluded = excludedHacks(keyword, meta, web3);
     const ranked = rankCandidates(candidates, meta);
     const results = ranked.map((c) => {
       const m = meta.get(c.tld)!;
@@ -160,7 +162,14 @@ async function main() {
           : {}),
       };
     });
-    return { keyword, web3, count: results.length, results };
+    return {
+      keyword,
+      web3,
+      count: results.length,
+      results,
+      // linguistically-matching endings that are impossible to own, with the reason
+      excluded: excluded.slice(0, 40),
+    };
   });
 
   await app.listen({ port: config.port, host: "0.0.0.0" });

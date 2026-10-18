@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  excludedHacks,
   generateHacks,
   normalizeKeyword,
   rankCandidates,
@@ -118,4 +119,31 @@ test("no root hack is generated for a third-level-only registry", () => {
     il: { registrablePublicly: false, tldType: "cctld", secondLevelRegistrable: false },
   }));
   assert.deepEqual(generateHacks("smil", suggestibleTlds(meta, false)), []);
+});
+
+// the finder explains why a linguistically-perfect hack is impossible
+// instead of silently omitting it (.ti-class endings, closed registries).
+test("excludedHacks surfaces .il, .er and brand .dev with reasons, not silence", () => {
+  const meta = new Map<string, any>(Object.entries({
+    il: { registrablePublicly: false, tldType: "cctld", secondLevelRegistrable: false },
+    er: { registrablePublicly: false, tldType: "cctld", secondLevelRegistrable: true },
+    us: { registrablePublicly: true, tldType: "cctld", secondLevelRegistrable: true },
+    dev: { registrablePublicly: false, tldType: "brand" },
+  }));
+
+  const il = excludedHacks("travail", meta, false).find((x) => x.tld === "il");
+  assert.ok(il, ".il should be surfaced for a word ending in -il");
+  assert.equal(il.reason, "registry has no root registrations (third-level only)");
+  assert.equal(il.fqdn, "trava.il");
+
+  const er = excludedHacks("smiler", meta, false).find((x) => x.tld === "er");
+  assert.ok(er, ".er should be surfaced for a word ending in -er");
+  assert.equal(er.reason, "not registrable (closed registry)");
+
+  const dev = excludedHacks("phoneappdev", meta, false).find((x) => x.tld === "dev");
+  assert.ok(dev, "brand .dev should be surfaced as excluded");
+  assert.equal(dev.reason, "brand gtld — only the owner registers");
+
+  assert.ok(!excludedHacks("delicious", meta, false).some((x) => x.tld === "us"),
+    ".us is suggestible — never excluded");
 });

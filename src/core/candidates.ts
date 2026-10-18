@@ -59,6 +59,50 @@ export interface TldMetaLite {
   typicalPrice?: number | null;
 }
 
+export interface ExcludedHack {
+  fqdn: string;
+  tld: string;
+  reason: string;
+}
+
+// endings that match the keyword linguistically but are NOT suggestible —
+// e.g. smi.le? no: sm.il under .il (only co.il exists), closed registries like
+// .er, brand gtlds, and web3 namespaces. the finder surfaces these with a
+// reason instead of silently dropping them (spec 12.1: never suggest what you
+// cannot own — but show what would have matched).
+export function excludedHacks(
+  keyword: string,
+  meta: Map<string, TldMetaLite>,
+  web3: boolean
+): ExcludedHack[] {
+  const s = normalizeKeyword(keyword);
+  const out: ExcludedHack[] = [];
+  if (s.length < 2) return out;
+  for (const [tld, m] of meta) {
+    if (s.length > tld.length && s.endsWith(tld)) {
+      const suggestible =
+        (web3 || m.tldType !== "web3") &&
+        m.registrablePublicly &&
+        m.secondLevelRegistrable !== false;
+      if (suggestible) continue;
+      let reason: string;
+      if (m.tldType === "web3") {
+        reason = "web3 namespace (toggle web3 to include)";
+      } else if (m.secondLevelRegistrable === false) {
+        reason = "registry has no root registrations (third-level only)";
+      } else if (m.tldType === "brand") {
+        reason = "brand gtld — only the owner registers";
+      } else if (!m.registrablePublicly) {
+        reason = "not registrable (closed registry)";
+      } else {
+        reason = "unavailable";
+      }
+      out.push({ fqdn: `${s.slice(0, -tld.length)}.${tld}`, tld, reason });
+    }
+  }
+  return out;
+}
+
 // endings eligible for hack suggestion. excludes web3 unless toggled, closed
 // endings, and registries that never register the root at all (spec 12.1:
 // never suggest a hack the buyer cannot own — e.g. .il only offers co.il).
