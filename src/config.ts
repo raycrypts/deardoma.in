@@ -10,4 +10,10 @@ export const config = {
     firecrawl: Boolean(process.env.FIRECRAWL_API_KEY),
     tavily: Boolean(process.env.TAVILY_API_KEY),
   },
+  history: {
+    // paid pre-check providers (research/history-providers.md)
+    whoisfreaks: Boolean(process.env.WHOISFREAKS_API_KEY),
+    whoisxml: Boolean(process.env.WHOISXML_API_KEY),
+    securitytrails: Boolean(process.env.SECURITYTRAILS_API_KEY),
+  },
 };

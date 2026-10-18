@@ -7,6 +7,8 @@ the full product spec is `donna-spec.md`. this file scopes what we're building *
 ## in scope (this build)
 
 - pre-check pipeline (spec 5): registration data (rdap/whois), dns, website, wayback, github + public mentions, email checks, scores — job-based
+- **domain purgatory** (spec 5.1 + research/domain-purgatory.md on the domainhacks branch): free rdap signal classifies the post-expiry walk — ok / auto_renew_grace / redemption / pending_restore / pending_delete / suspended / dropped — with per-stage campaign advice (redemption = negotiation moment; pending_delete = shift to drop/auction watch). gTLD-authoritative, best-effort for ccTLDs.
+- **whois history + past dns** (spec 5.1b, paid): whoisfreaks (ownership timeline, v2.0 api) with whoisxml as alternate, securitytrails (dns history: site-death dating + long-term parking-infra detection). signals: recently_changed_hands, serial_lapser, registrar_hopper, long_term_parked. locked behind the paid pre-check (`payload.paid`); each client degrades to `skipped: no key` — keys: WHOISFREAKS_API_KEY, WHOISXML_API_KEY, SECURITYTRAILS_API_KEY.
 - contact routes + confidence gates (spec 6, 7): priority order, route limits, confidence table
 - outreach + negotiation engine (spec 8): message rules as templates, negotiation policy (pure logic), reply classification
 - closing + transfer monitoring (spec 10) and expiry watch (spec 11) as job skeletons
@@ -44,5 +46,5 @@ api keys are optional env vars (`QUERIT_API_KEY`, `FIRECRAWL_API_KEY`, `TAVILY_A
 
 ## scaffold status
 
-- real: state machine, negotiation policy, route priority + limits + confidence gates, job queue + claim loop, migrations, api, dns step of the pre-check (mx/ns + provider classification)
-- placeholder: reply classifier (keyword heuristic until the llm lands), pre-check scores, every external lookup (todo-marked in `src/workers/handlers.ts`)
+- real: state machine, negotiation policy, route priority + limits + confidence gates, job queue + claim loop, migrations, api, dns step of the pre-check (mx/ns + provider classification), rdap registration data + purgatory classification, paid history step (whoisfreaks/whoisxml/securitytrails, key-gated), transfer monitor (registrar/created-change detection + 60-day block note), expiry watch (purgatory-stage alerts: redemption/pending_delete/pending_restore/auto_renew_grace)
+- placeholder: reply classifier (keyword heuristic until the llm lands), pre-check scores, website/wayback/mentions/email steps (todo-marked in `src/workers/handlers.ts`)

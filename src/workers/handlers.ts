@@ -1,6 +1,9 @@
 import { promises as dns } from "node:dns";
 import { pool } from "../db.js";
 import { classifyReplyPlaceholder } from "../core/intents.js";
+import { classifyPurgatory, DROPPED } from "../core/purgatory.js";
+import { fetchRdap } from "../core/history/rdap.js";
+import { historySignals } from "../core/history/index.js";
 
 type Payload = Record<string, unknown>;
 
@@ -65,8 +68,35 @@ async function precheck(payload: Payload) {
     result.dns = { error: "no dns records or lookup failed" };
   }
 
-  // TODO 5.1 registration data: rdap first (rdap.org bootstrap), whois fallback —
-  //      registrar, dates, status codes, privacy, privacy-forwarding contacts.
+  // 5.1 registration data (real): rdap via rdap.org bootstrap + purgatory
+  //     stage classification (free signal, research/domain-purgatory.md)
+  try {
+    const rdap = await fetchRdap(fqdn);
+    if (rdap === null) {
+      result.registration_data = { dropped: true };
+      result.purgatory = DROPPED;
+    } else {
+      const purgatory = classifyPurgatory(rdap.status, rdap.expires);
+      result.registration_data = rdap;
+      result.purgatory = purgatory;
+      await pool.query(
+        `update domains set registrar = $2, created_at = $3, expires_at = $4,
+           status_codes = $5, privacy = $6 where id = $1`,
+        [domainId, rdap.registrar, rdap.created, rdap.expires, rdap.status, rdap.privacy]
+      );
+    }
+  } catch (e) {
+    result.registration_data = { error: (e as Error).message };
+  }
+
+  // 5.1b history (paid signal, research/history-providers.md): whois history
+  //     (whoisfreaks/whoisxml) + past dns (securitytrails), only when this
+  //     pre-check is paid. locked notice otherwise.
+  try {
+    result.history = await historySignals(fqdn, { paid: payload.paid === true });
+  } catch (e) {
+    result.history = { locked: `unavailable: ${(e as Error).message}`, skipped: [], errors: [] };
+  }
   // TODO 5.3 website: firecrawl fetch + classification (parked / for sale /
   //      default page / placeholder / live) + activity signals.
   // TODO 5.4 wayback: snapshot count, first/last dates.
@@ -75,7 +105,6 @@ async function precheck(payload: Payload) {
   // TODO 5.6 email checks: dedicated smtp checker or verification api (catch-all
   //      test, common local parts; never abuse/postmaster; never from sending servers).
   result.pending = [
-    "registration_data",
     "website",
     "wayback",
     "public_mentions",
@@ -121,23 +150,85 @@ async function replyClassifier(payload: Payload) {
   );
 }
 
-// Transfer completion detection (spec 10.5): rdap polling for a change of
-// registrar or registrant.
+// Transfer completion detection (spec 10.5, real): rdap vs the stored
+// registrar/created row. a registrar change within 60 days means the 60-day
+// epp transfer block applied and has just cleared (or is still running).
 async function transferMonitor(payload: Payload) {
-  await recordEvent(
-    "transfer_check_deferred",
-    { todo: "rdap polling for registrar/registrant change (spec 10.5); detect 60-day transfer blocks" },
-    { campaignId: payload.campaignId as number }
+  const campaignId = payload.campaignId as number;
+  const { rows } = await pool.query(
+    `select d.id, d.fqdn, d.registrar, d.created_at, d.status_codes
+     from campaigns c join domains d on d.id = c.domain_id where c.id = $1`,
+    [campaignId]
   );
+  if (!rows[0]) {
+    await recordEvent("transfer_check_failed", { error: "campaign or domain not found" }, { campaignId });
+    return;
+  }
+  const d = rows[0];
+  try {
+    const rdap = await fetchRdap(d.fqdn);
+    if (rdap === null) {
+      await recordEvent("transfer_check", { fqdn: d.fqdn, outcome: "dropped" }, { campaignId, domainId: d.id });
+      return;
+    }
+    const registrarChanged =
+      !!d.registrar && !!rdap.registrar && d.registrar.toLowerCase() !== rdap.registrar.toLowerCase();
+    const createdChanged =
+      !!d.created_at && !!rdap.created &&
+      new Date(d.created_at).toISOString().slice(0, 10) !== rdap.created.slice(0, 10);
+    const daysSinceChange = rdap.lastChanged
+      ? Math.floor((Date.now() - Date.parse(rdap.lastChanged)) / 86_400_000)
+      : null;
+    await pool.query(
+      `update domains set registrar = $2, created_at = $3, expires_at = $4, status_codes = $5 where id = $1`,
+      [d.id, rdap.registrar, rdap.created, rdap.expires, rdap.status]
+    );
+    await recordEvent(
+      "transfer_check",
+      {
+        fqdn: d.fqdn,
+        outcome: registrarChanged || createdChanged ? "transfer_detected" : "unchanged",
+        registrarChanged,
+        createdChanged,
+        transferBlock:
+          daysSinceChange !== null && daysSinceChange < 60
+            ? `changed ${daysSinceChange} days ago; the 60-day epp transfer block may still apply`
+            : null,
+      },
+      { campaignId, domainId: d.id }
+    );
+  } catch (e) {
+    await recordEvent("transfer_check_failed", { fqdn: d.fqdn, error: (e as Error).message }, { campaignId, domainId: d.id });
+  }
 }
 
-// Expiry watch (spec 11): daily rdap status checks as expiry approaches.
+// Expiry watch (spec 11, real): rdap status + purgatory stage. when the name
+// walks into redemption/pending_delete the campaign shifts: contacting the
+// owner is pointless for the current cycle (research/domain-purgatory.md).
 async function expiryWatch(payload: Payload) {
-  await recordEvent(
-    "expiry_watch_deferred",
-    { todo: "daily rdap status check near expiry; alert on pendingdelete (spec 11)" },
-    { domainId: payload.domainId as number }
-  );
+  const domainId = payload.domainId as number;
+  const { rows } = await pool.query(`select fqdn from domains where id = $1`, [domainId]);
+  const fqdn: string = rows[0].fqdn;
+  try {
+    const rdap = await fetchRdap(fqdn);
+    if (rdap === null) {
+      await recordEvent("expiry_watch", { fqdn, ...DROPPED }, { domainId });
+      return;
+    }
+    const purgatory = classifyPurgatory(rdap.status, rdap.expires);
+    await pool.query(
+      `update domains set status_codes = $2, expires_at = $3 where id = $1`,
+      [domainId, rdap.status, rdap.expires]
+    );
+    const alerting = ["redemption", "pending_delete", "pending_restore", "auto_renew_grace"].includes(purgatory.stage);
+    await recordEvent(
+      alerting ? "purgatory_alert" : "expiry_watch",
+      { fqdn, ...purgatory },
+      { domainId }
+    );
+  } catch (e) {
+    await recordEvent("expiry_watch_failed", { fqdn, error: (e as Error).message }, { domainId });
+  }
 }
 
 export const handlers: Record<string, (payload: Payload) => Promise<void>> = {
