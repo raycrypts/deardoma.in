@@ -1,0 +1,1422 @@
+[
+  {
+    "tld": "ac",
+    "route": "direct",
+    "intermediaryNote": "unrestricted registration open to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.ac/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ae",
+    "route": "direct",
+    "intermediaryNote": "unrestricted registration open to individuals and businesses worldwide without local presence requirements since 2008",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.aeda.ae/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ag",
+    "route": "direct",
+    "intermediaryNote": "unrestricted registration open to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "http://www.nic.ag/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ai",
+    "route": "direct",
+    "intermediaryNote": "unrestricted registration open to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://whois.ai/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "al",
+    "route": "intermediary",
+    "intermediaryNote": "akep requires local presence in albania; registrars (101domain, eurodns, marcaria) offer local trustee service for foreign registrants (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/al.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ao",
+    "route": "intermediary",
+    "intermediaryNote": "dns.ao requires local presence or legal entity in angola; registrars offer trustee service for foreign registrants (~$199/yr)",
+    "intermediaryFee": 199.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/ao.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ar",
+    "route": "intermediary",
+    "intermediaryNote": "nic argentina requires local tax id (cuil/cuit) or local presence; registrars (101domain, marcaria, eurodns) offer local trustee service (~$79/yr)",
+    "intermediaryFee": 79.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nic.ar/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "as",
+    "route": "direct",
+    "intermediaryNote": "unrestricted registration open to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "http://www.nic.as/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "at",
+    "route": "direct",
+    "intermediaryNote": "nic.at allows direct domain registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.at/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "aw",
+    "route": "intermediary",
+    "intermediaryNote": "setar requires local presence in aruba; registrars (101domain, marcaria) offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/aw.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ba",
+    "route": "intermediary",
+    "intermediaryNote": "utic / nic.ba requires local company or administrative contact in bosnia; registrars (101domain, eurodns) offer trustee service (~$69/yr)",
+    "intermediaryFee": 69.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nic.ba/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bb",
+    "route": "direct",
+    "intermediaryNote": "telecoms unit barbados allows direct registration to foreign individuals and companies without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/bb.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "be",
+    "route": "direct",
+    "intermediaryNote": "dns belgium allows direct domain registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dnsbelgium.be/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bf",
+    "route": "intermediary",
+    "intermediaryNote": "arcep requires local presence in burkina faso; registrars offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/bf.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bg",
+    "route": "intermediary",
+    "intermediaryNote": "register.bg requires eu/eea citizenship, residence, or legal entity; registrars (101domain, eurodns) offer trustee service for non-eu applicants (~$39/yr)",
+    "intermediaryFee": 39.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.register.bg/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bq",
+    "route": "unavailable",
+    "intermediaryNote": "iso country code reserved for caribbean netherlands, but .bq ccTLD is not delegated/active for registration in iana root zone",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": false,
+    "sourceUrl": "https://www.iana.org/domains/root/db/bq.html",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "br",
+    "route": "intermediary",
+    "intermediaryNote": "registro.br requires local tax id (cpf/cnpj); major registrars (101domain, marcaria, eurodns) offer local trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://registro.br/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bs",
+    "route": "direct",
+    "intermediaryNote": "bs registry allows direct registration to foreign individuals and companies without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/bs.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bw",
+    "route": "direct",
+    "intermediaryNote": "bocra (.bw) allows direct registration to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nic.bw/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "by",
+    "route": "direct",
+    "intermediaryNote": "cctld.by allows direct registration to foreign individuals and companies without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://cctld.by/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "bz",
+    "route": "direct",
+    "intermediaryNote": "university of belize allows unrestricted registration to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.belizenic.bz/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ca",
+    "route": "personal_presence_only",
+    "intermediaryNote": "cira canadian presence requirements; trustee services not accepted \u2014 qualifies: canadian citizen, permanent resident, aboriginal peoples, canadian corporation, partnership, or trademark holder",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.cira.ca/en/legal-policy-and-compliance/canadian-presence-requirements",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cc",
+    "route": "direct",
+    "intermediaryNote": "unrestricted registration open to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.verisign.com/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cd",
+    "route": "intermediary",
+    "intermediaryNote": "scpt requires local presence in dr congo; registrars (101domain, marcaria) offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/cd.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ch",
+    "route": "direct",
+    "intermediaryNote": "switch allows direct registration to foreign individuals and entities without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.ch/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ci",
+    "route": "direct",
+    "intermediaryNote": "artci allows direct registration to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nic.ci/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cl",
+    "route": "direct",
+    "intermediaryNote": "nic chile allows direct registration to individuals and companies worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.cl/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cm",
+    "route": "direct",
+    "intermediaryNote": "antic allows direct registration to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.cm/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cn",
+    "route": "intermediary",
+    "intermediaryNote": "cnnic requires real-name verification (id/business license) or local contact; registrars (101domain, eurodns, marcaria) offer local trustee service for foreign applicants (~$29/yr)",
+    "intermediaryFee": 29.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "http://www.cnnic.cn/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cr",
+    "route": "direct",
+    "intermediaryNote": "nic costa rica allows direct registration to foreign individuals and companies without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.cr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cv",
+    "route": "direct",
+    "intermediaryNote": "arme (.cv) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dns.cv/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cw",
+    "route": "intermediary",
+    "intermediaryNote": "una / .cw requires local company registration in curacao chamber of commerce; registrars (101domain, marcaria) offer trustee service (~$249/yr)",
+    "intermediaryFee": 249.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/com_cw.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cy",
+    "route": "intermediary",
+    "intermediaryNote": "university of cyprus requires local presence or eu company/resident; registrars (101domain, eurodns) offer trustee service for non-eu applicants (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.cy/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "cz",
+    "route": "direct",
+    "intermediaryNote": "cz.nic allows direct registration to foreign individuals and entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.cz/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "de",
+    "route": "intermediary",
+    "intermediaryNote": "denic domain guidelines require an administrative contact (admin-c) with a german postal address for foreign registrants; accredited registrars automatically provide local admin contact representation",
+    "intermediaryFee": 0.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.denic.de/en/domains/de-domains/domain-guidelines",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "dk",
+    "route": "direct",
+    "intermediaryNote": "punktum.dk allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://punktum.dk/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "dm",
+    "route": "direct",
+    "intermediaryNote": "dotdm allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "http://www.nic.dm/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "do",
+    "route": "direct",
+    "intermediaryNote": "nic.do allows direct registration to foreign individuals and legal entities without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.do/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ec",
+    "route": "direct",
+    "intermediaryNote": "nic.ec allows direct registration to individuals and companies worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.ec/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ee",
+    "route": "intermediary",
+    "intermediaryNote": "estonian internet foundation (eis) allows non-resident registration, but requires an administrative contact located in estonia if registrant is outside eu; registrars automatically provide local administrative contact representation (~$15/yr)",
+    "intermediaryFee": 15.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.internet.ee/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "eg",
+    "route": "intermediary",
+    "intermediaryNote": "eunu / ntra requires local business registration or local presence in egypt; registrars (101domain, marcaria, eurodns) offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/eg.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "es",
+    "route": "direct",
+    "intermediaryNote": "red.es allows direct registration to individuals and legal entities worldwide without local presence requirements (passport or tax id required)",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dominios.es/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "et",
+    "route": "intermediary",
+    "intermediaryNote": "ethio telecom requires local presence or ethiopian business registration; registrars (101domain, marcaria) offer trustee service (~$199/yr)",
+    "intermediaryFee": 199.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/et.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "eu",
+    "route": "personal_presence_only",
+    "intermediaryNote": "eurid requires eu/eea citizenship, residency, or an undertaking/organisation established in the eu/eea; trustee services are prohibited; business_presence (eu-established company) also qualifies",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://eurid.eu/en/knowledge-centre/rules-for-eu-domains/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "fi",
+    "route": "direct",
+    "intermediaryNote": "traficom (.fi) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements since 2016",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.traficom.fi/en/communications/fi-domains",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "fr",
+    "route": "intermediary",
+    "intermediaryNote": "afnic requires registrant or admin contact located in EU/EEA/EFTA; major registrars (101domain, eurodns, gandi, netim) offer local presence/trustee service for non-EU registrants (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/en/domain-names/register-a-domain-name/who-can-register-a-dot-fr-domain-name/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ga",
+    "route": "direct",
+    "intermediaryNote": "aninf allows direct registration to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/ga.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gd",
+    "route": "direct",
+    "intermediaryNote": "ntrc grenada allows direct registration to individuals and companies worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "http://www.nic.gd/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gf",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gh",
+    "route": "intermediary",
+    "intermediaryNote": "network computer systems / .gh requires local presence in ghana; registrars (101domain, marcaria) offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/gh.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gp",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gr",
+    "route": "direct",
+    "intermediaryNote": "eett (.gr) allows direct registration to individuals and companies worldwide (eu or non-eu) without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.eett.gr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gs",
+    "route": "direct",
+    "intermediaryNote": "cocca / .gs allows direct registration to individuals and entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nic.gs/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gt",
+    "route": "direct",
+    "intermediaryNote": "universidad del valle / .gt allows direct registration to foreign individuals and legal entities without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.gt/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gu",
+    "route": "intermediary",
+    "intermediaryNote": "guam telecom requires guam/us presence or local connection; registrars offer local presence/trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/gu.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "gy",
+    "route": "direct",
+    "intermediaryNote": "university of guyana allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.registry.gy/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "hk",
+    "route": "direct",
+    "intermediaryNote": "hkirc allows unrestricted direct registration for second-level .hk to individuals and businesses worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.hkirc.hk/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "hn",
+    "route": "direct",
+    "intermediaryNote": "nic.hn allows direct registration to foreign individuals and companies without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.hn/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "hr",
+    "route": "intermediary",
+    "intermediaryNote": "carnet (.hr) requires local croatian entity or eu/eea citizenship/residence; registrars (101domain, eurodns) offer trustee service for non-eu applicants (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dns.hr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ht",
+    "route": "direct",
+    "intermediaryNote": "fhk / .ht allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.ht/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "hu",
+    "route": "intermediary",
+    "intermediaryNote": "iszt (.hu) requires eu/eea citizenship, residence, or legal entity; registrars (101domain, eurodns) offer trustee service for non-eu applicants (~$39/yr)",
+    "intermediaryFee": 39.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.domain.hu/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "id",
+    "route": "intermediary",
+    "intermediaryNote": "pandi (.id) requires local presence/indonesian id or company registration; major registrars (101domain, eurodns, marcaria) offer local trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://pandi.id/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ie",
+    "route": "intermediary",
+    "intermediaryNote": "weareiedr requires proven connection to ireland or eu commercial link; registrars (dnsimple, 101domain, eurodns) offer trustee service for applicants without irish ties (~$30/yr)",
+    "intermediaryFee": 30.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.weare.ie/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "il",
+    "route": "direct",
+    "intermediaryNote": "isoc-il allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.isoc.org.il/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "in",
+    "route": "direct",
+    "intermediaryNote": "nixi (.in) allows direct registration to individuals and legal entities worldwide without local presence requirements since 2005",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://registry.in/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "io",
+    "route": "direct",
+    "intermediaryNote": "identity digital / internet computer bureau allows direct registration to individuals and entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.io/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "is",
+    "route": "direct",
+    "intermediaryNote": "isnic allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.isnic.is/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "it",
+    "route": "intermediary",
+    "intermediaryNote": "registro.it requires eu/eea citizenship, residence, or establishment; registrars (101domain, eurodns) offer local presence/trustee service for non-eu registrants (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.it/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "jm",
+    "route": "intermediary",
+    "intermediaryNote": "mona information technology (.jm) requires local presence in jamaica; registrars offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/jm.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "jp",
+    "route": "intermediary",
+    "intermediaryNote": "jprs requires local contact/address in japan; major registrars (101domain, marcaria, eurodns) offer local trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://jprs.co.jp/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ke",
+    "route": "direct",
+    "intermediaryNote": "kenic (.ke) allows direct registration for second-level .ke to individuals and entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://kenic.or.ke/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "kr",
+    "route": "intermediary",
+    "intermediaryNote": "kisa / krnic (.kr) requires local address in south korea; registrars (101domain, marcaria, eurodns) offer local presence/trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://krnic.or.kr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "kw",
+    "route": "intermediary",
+    "intermediaryNote": "citra (.kw) requires local business registration in kuwait; registrars (101domain, marcaria) offer trustee service (~$299/yr)",
+    "intermediaryFee": 299.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/kw.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ky",
+    "route": "direct",
+    "intermediaryNote": "ofreg (.ky) allows direct registration to individuals and legal entities worldwide without local presence requirements since 2015",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.unaux.ky/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "kz",
+    "route": "intermediary",
+    "intermediaryNote": "kaznic requires primary and secondary dns servers to be physically located inside kazakhstan; registrars offer local server/trustee hosting (~$29/yr)",
+    "intermediaryFee": 29.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.kz/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ls",
+    "route": "intermediary",
+    "intermediaryNote": "lnc (.ls) requires local presence or local admin contact; registrars offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/ls.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "lt",
+    "route": "direct",
+    "intermediaryNote": "domreg (.lt) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.domreg.lt/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "lu",
+    "route": "direct",
+    "intermediaryNote": "dns.lu allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dns.lu/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "lv",
+    "route": "direct",
+    "intermediaryNote": "nic.lv allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.lv/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ma",
+    "route": "intermediary",
+    "intermediaryNote": "anrt (.ma) requires local business registration or trademark in morocco; registrars (101domain, marcaria) offer trustee service (~$79/yr)",
+    "intermediaryFee": 79.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.anrt.ma/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "md",
+    "route": "direct",
+    "intermediaryNote": "molddata / stisc (.md) allows direct registration to foreign individuals and entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nic.md/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "me",
+    "route": "direct",
+    "intermediaryNote": "domen (.me) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://domain.me/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mhm",
+    "route": "unavailable",
+    "intermediaryNote": "non-standard entry; .mhm is not a delegated TLD in the iana root zone (marshall islands ccTLD is .mh, which is unassigned/restricted)",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": false,
+    "sourceUrl": "https://www.iana.org/domains/root/db/mh.html",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mk",
+    "route": "intermediary",
+    "intermediaryNote": "marnet (.mk) requires local company or residency in north macedonia; registrars (101domain, eurodns) offer trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://marnet.mk/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ml",
+    "route": "direct",
+    "intermediaryNote": "aert (.ml) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/ml.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mq",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ms",
+    "route": "direct",
+    "intermediaryNote": "mni (.ms) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.ms/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mu",
+    "route": "direct",
+    "intermediaryNote": "mnic (.mu) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.mu/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mw",
+    "route": "direct",
+    "intermediaryNote": "sdnp (.mw) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.registrar.mw/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mx",
+    "route": "direct",
+    "intermediaryNote": "nic mexico (.mx) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.registry.mx/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "my",
+    "route": "intermediary",
+    "intermediaryNote": "mynic (.my) requires local administrative contact in malaysia; major registrars (101domain, eurodns, marcaria) offer local trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://mynic.my/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "mz",
+    "route": "intermediary",
+    "intermediaryNote": "eduardo mondlane university (.mz) requires local presence in mozambique; registrars offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/mz.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "na",
+    "route": "direct",
+    "intermediaryNote": "na-nic (.na) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.na-nic.com.na/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ne",
+    "route": "intermediary",
+    "intermediaryNote": "sonitel (.ne) requires local presence in niger; registrars offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/ne.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ng",
+    "route": "direct",
+    "intermediaryNote": "nira (.ng) allows direct registration for second-level .ng to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://nira.org.ng/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ni",
+    "route": "intermediary",
+    "intermediaryNote": "ni.ni (.ni) requires local presence or local company registration; registrars offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/ni.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "nl",
+    "route": "direct",
+    "intermediaryNote": "sidn (.nl) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.sidn.nl/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "no",
+    "route": "intermediary",
+    "intermediaryNote": "norid (.no) requires a norwegian organization number or personal pid; major registrars (101domain, eurodns, web solutions) offer local trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.norid.no/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "pa",
+    "route": "direct",
+    "intermediaryNote": "nic panama (.pa) allows direct registration to foreign individuals and legal entities without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.pa/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "pe",
+    "route": "direct",
+    "intermediaryNote": "punto.pe (.pe) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.punto.pe/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ph",
+    "route": "direct",
+    "intermediaryNote": "dotph (.ph) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dot.ph/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "pl",
+    "route": "direct",
+    "intermediaryNote": "nask (.pl) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dns.pl/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "pm",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "pr",
+    "route": "direct",
+    "intermediaryNote": "gauss / .pr allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.pr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "pt",
+    "route": "direct",
+    "intermediaryNote": "dns.pt (.pt) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.dns.pt/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "qa",
+    "route": "intermediary",
+    "intermediaryNote": "cra qatar (.qa) requires local presence or qatari business registration; registrars (101domain, marcaria) offer trustee service (~$199/yr)",
+    "intermediaryFee": 199.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.domains.qa/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "re",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ro",
+    "route": "direct",
+    "intermediaryNote": "rotld (.ro) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.rotld.ro/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "rs",
+    "route": "direct",
+    "intermediaryNote": "rnids (.rs) allows direct registration for second-level .rs to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.rnids.rs/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sa",
+    "route": "intermediary",
+    "intermediaryNote": "saudinic / cst (.sa) requires saudi business registration or trademark; registrars (101domain, marcaria) offer local presence/trustee service (~$199/yr)",
+    "intermediaryFee": 199.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.sa/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sc",
+    "route": "direct",
+    "intermediaryNote": "vrsn / .sc allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.sc/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "se",
+    "route": "direct",
+    "intermediaryNote": "internetstiftelsen (.se) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://internetstiftelsen.se/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sg",
+    "route": "intermediary",
+    "intermediaryNote": "sgnic (.sg) requires local administrative contact in singapore; major registrars (101domain, eurodns, marcaria) offer local trustee service (~$49/yr)",
+    "intermediaryFee": 49.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.sgnic.sg/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sh",
+    "route": "direct",
+    "intermediaryNote": "nic.sh allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.sh/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "si",
+    "route": "direct",
+    "intermediaryNote": "arnes (.si) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.register.si/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sk",
+    "route": "direct",
+    "intermediaryNote": "sk-nic (.sk) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements since 2020",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://sk-nic.sk/en/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sn",
+    "route": "intermediary",
+    "intermediaryNote": "nic senegal (.sn) requires local company or administrative contact in senegal; registrars offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.sn/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "so",
+    "route": "direct",
+    "intermediaryNote": "sonic (.so) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://sonic.so/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sr",
+    "route": "direct",
+    "intermediaryNote": "telesur / .sr allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.sr.net/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sx",
+    "route": "direct",
+    "intermediaryNote": "sx registry (.sx) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.registry.sx/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "sz",
+    "route": "direct",
+    "intermediaryNote": "sispa (.sz) allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "http://www.sispa.org.sz/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tc",
+    "route": "direct",
+    "intermediaryNote": "melbec / .tc allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.tc/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "td",
+    "route": "intermediary",
+    "intermediaryNote": "teletchad (.td) requires local presence in chad; registrars offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.101domain.com/td.htm",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tf",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "th",
+    "route": "intermediary",
+    "intermediaryNote": "thnic (.th) requires local business or trademark in thailand; major registrars (101domain, eurodns, marcaria) offer local trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.thnic.co.th/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tn",
+    "route": "intermediary",
+    "intermediaryNote": "ati (.tn) requires local company or residency in tunisia; registrars (101domain, marcaria) offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.ati.tn/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tr",
+    "route": "direct",
+    "intermediaryNote": "trabis / btk (.tr) allows unrestricted direct registration for .tr, .com.tr, .net.tr, .org.tr to individuals and legal entities worldwide without local presence requirements since 2022",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.trabis.gov.tr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tt",
+    "route": "direct",
+    "intermediaryNote": "uwi / .tt allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.tt/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tv",
+    "route": "direct",
+    "intermediaryNote": "godaddy registry / tuvalu allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.tv/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tw",
+    "route": "direct",
+    "intermediaryNote": "twnic (.tw) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.twnic.tw/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "tz",
+    "route": "intermediary",
+    "intermediaryNote": "tznic (.tz) requires local presence or local business in tanzania; registrars (101domain, marcaria) offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.tznic.or.tz/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ua",
+    "route": "intermediary",
+    "intermediaryNote": "hostmaster (.ua) requires a registered trademark matching the domain name in ukraine for second-level .ua; registrars (web solutions, 101domain, marcaria) offer trustee service (~$119/yr)",
+    "intermediaryFee": 119.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://hostmaster.ua/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ug",
+    "route": "direct",
+    "intermediaryNote": "registry africa / .ug allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.registry.ug/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "uk",
+    "route": "direct",
+    "intermediaryNote": "nominet (.uk) allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nominet.uk/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "us",
+    "route": "personal_presence_only",
+    "intermediaryNote": "us nexus requirement (us citizen, permanent resident, us entity, or foreign entity with bona fide us presence); attested directly by registrant, trustee/proxy services not accepted",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.about.us/policies",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "vg",
+    "route": "direct",
+    "intermediaryNote": "adamsnames / .vg allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.vg/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "vi",
+    "route": "intermediary",
+    "intermediaryNote": "cobalt / .vi requires local presence in us virgin islands or us territory nexus; registrars offer trustee service (~$149/yr)",
+    "intermediaryFee": 149.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.nic.vi/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "vn",
+    "route": "intermediary",
+    "intermediaryNote": "vnnic (.vn) requires local presence/representative in vietnam; major registrars (101domain, eurodns, marcaria) offer local trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://vnnic.vn/en",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "ws",
+    "route": "direct",
+    "intermediaryNote": "samoa nic / .ws allows direct registration to individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.samoanic.ws/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "yt",
+    "route": "intermediary",
+    "intermediaryNote": "managed under afnic rules (.fr); requires eu/eea residence or local presence/trustee service offered by registrars (~$25/yr)",
+    "intermediaryFee": 25.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.afnic.fr/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "za",
+    "route": "direct",
+    "intermediaryNote": "zadna / zacr allows direct registration to foreign individuals and legal entities worldwide without local presence requirements",
+    "intermediaryFee": null,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.zadna.org.za/",
+    "accessed": "2026-10-18",
+    "verified": true
+  },
+  {
+    "tld": "zw",
+    "route": "intermediary",
+    "intermediaryNote": "zispa (.zw) requires local presence or local contact in zimbabwe; registrars offer trustee service (~$99/yr)",
+    "intermediaryFee": 99.0,
+    "businessPresenceAccepted": true,
+    "sourceUrl": "https://www.zispa.org.zw/",
+    "accessed": "2026-10-18",
+    "verified": true
+  }
+]

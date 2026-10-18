@@ -1,0 +1,405 @@
+[
+ {
+  "tld": "bo",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.bo",
+   "org.bo",
+   "net.bo",
+   "edu.bo",
+   "gob.bo",
+   "mil.bo",
+   "tv.bo",
+   "web.bo"
+  ],
+  "note": "third-level only; no public second-level .bo registration",
+  "sourceUrl": "https://www.nic.bo/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "br",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "registro.br requires a brazilian tax id (cpf/cnpj); trustee services available",
+  "sourceUrl": "https://registro.br/en/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "ca",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "cira canadian presence requirements (citizen, permanent resident, canadian company...); no trustee workaround",
+  "sourceUrl": "https://www.cira.ca/en/domains/canadian-presence-requirements/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "cc",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://nic.cc/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "cl",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://www.nic.cl/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "cn",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "cnnic requires china presence documents; trustee services available",
+  "sourceUrl": "https://cnnic.com.cn/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "co",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://cointernet.co/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "cr",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "co.cr",
+   "or.cr",
+   "ac.cr",
+   "go.cr",
+   "ed.cr",
+   "fi.cr"
+  ],
+  "note": "third-level only; no public second-level .cr registration",
+  "sourceUrl": "https://www.nic.cr/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "de",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "denic requires an administrative contact with a german postal address; handled by the registrar for foreign registrants",
+  "sourceUrl": "https://www.denic.de/en/domains/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "eg",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.eg",
+   "net.eg",
+   "org.eg",
+   "edu.eg",
+   "gov.eg",
+   "eun.eg",
+   "mil.eg",
+   "name.eg",
+   "sci.eg"
+  ],
+  "note": "third-level only; no public second-level .eg registration",
+  "sourceUrl": "https://www.egregistry.eg/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "eu",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "eu/eea citizens or residents, or organisations established in the eu/eea",
+  "sourceUrl": "https://www.eurid.eu/en/register-eu-domain/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "fr",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "registrant or admin contact in eu/eea/efta; trustee services available (~$25/yr)",
+  "sourceUrl": "https://www.afnic.fr/en/domain-names/register-a-domain-name/who-can-register-a-dot-fr-domain-name/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "hk",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://www.hkirc.hk/en/domain/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "il",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "co.il",
+   "org.il",
+   "net.il",
+   "ac.il",
+   "gov.il",
+   "idf.il",
+   "k12.il",
+   "muni.il"
+  ],
+  "note": "isoc-il registers only third-level names",
+  "sourceUrl": "https://www.isoc.org.il/domains/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "in",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide, no local presence required",
+  "sourceUrl": "https://registry.in/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "io",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://www.nic.io/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "jp",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide via registrars (jprs)",
+  "sourceUrl": "https://jprs.co.jp/en/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "ke",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "co.ke",
+   "or.ke",
+   "ne.ke",
+   "go.ke",
+   "ac.ke",
+   "sc.ke",
+   "info.ke",
+   "me.ke",
+   "mobi.ke"
+  ],
+  "note": "kenic third-level only; no public second-level .ke registration",
+  "sourceUrl": "https://www.kenic.or.ke/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "me",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://domain.me/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "mx",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide (direct .mx)",
+  "sourceUrl": "https://www.nic.mx/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "np",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.np",
+   "org.np",
+   "edu.np",
+   "net.np",
+   "gov.np",
+   "aero.np",
+   "biz.np",
+   "coop.np",
+   "info.np",
+   "museum.np",
+   "name.np"
+  ],
+  "note": "register.com.np offers third-level only; no public second-level .np registration",
+  "sourceUrl": "https://register.com.np/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "nz",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://dnc.org.nz/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "pk",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.pk",
+   "org.pk",
+   "net.pk",
+   "edu.pk",
+   "gov.pk",
+   "fam.pk",
+   "biz.pk",
+   "web.pk",
+   "gob.pk",
+   "gok.pk"
+  ],
+  "note": "pknic third-level only; no public second-level .pk registration",
+  "sourceUrl": "https://www.pknic.net.pk/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "py",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.py",
+   "org.py",
+   "net.py",
+   "edu.py",
+   "gov.py",
+   "mil.py",
+   "coop.py"
+  ],
+  "note": "third-level only; no public second-level .py registration",
+  "sourceUrl": "https://www.nic.py/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "ru",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open registration; sanctions-related risk flagged",
+  "sourceUrl": "https://cctld.ru/en/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "sa",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.sa",
+   "net.sa",
+   "org.sa",
+   "edu.sa",
+   "gov.sa",
+   "med.sa",
+   "pub.sa",
+   "sch.sa"
+  ],
+  "note": "third-level only; no public second-level .sa registration",
+  "sourceUrl": "https://nic.sa/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "su",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open registration (legacy soviet tld, still sold)",
+  "sourceUrl": "https://cctld.ru/en/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "th",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "co.th",
+   "in.th",
+   "or.th",
+   "ac.th",
+   "go.th",
+   "net.th",
+   "mi.th"
+  ],
+  "note": "third-level only for the public; no open second-level .th registration",
+  "sourceUrl": "https://www.thnic.co.th/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "tv",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "open worldwide",
+  "sourceUrl": "https://nic.tv/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "uk",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "anyone may register; non-uk registrants must supply a uk address for service (nominet sldr rules)",
+  "sourceUrl": "https://nominet.uk/wp-content/uploads/2025/01/sldr_rules_140507_final_0.pdf",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "us",
+  "secondLevelRegistrable": true,
+  "thirdLevelNamespaces": null,
+  "note": "us nexus: us citizens, residents, or organizations with a bona fide us presence",
+  "sourceUrl": "https://www.nic.us/policies/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "uy",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "com.uy",
+   "org.uy",
+   "net.uy",
+   "edu.uy",
+   "gub.uy",
+   "mil.uy"
+  ],
+  "note": "third-level only; no public second-level .uy registration",
+  "sourceUrl": "https://nic.antel.com.uy/",
+  "accessed": "2026-10-18",
+  "verified": false
+ },
+ {
+  "tld": "za",
+  "secondLevelRegistrable": false,
+  "thirdLevelNamespaces": [
+   "co.za",
+   "org.za",
+   "net.za",
+   "web.za",
+   "biz.za"
+  ],
+  "note": "zarc registers third-level only; the .za root is not open to registration",
+  "sourceUrl": "https://www.zadna.org.za/",
+  "accessed": "2026-10-18",
+  "verified": false
+ }
+]

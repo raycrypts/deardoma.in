@@ -51,10 +51,34 @@ export function generateHacks(
 
 export interface TldMetaLite {
   registrablePublicly: boolean;
+  restriction?: string;
+  restrictionVerified?: boolean;
+  registrationRoute?: string; // direct | intermediary | business_presence | personal_presence_only | unavailable | unknown
+  tldType?: string;
+  secondLevelRegistrable?: boolean | null;
   typicalPrice?: number | null;
 }
 
-// Ranking per spec 12.1: fewer dots first, then registrable tlds, then price.
+// endings eligible for hack suggestion. excludes web3 unless toggled, closed
+// endings, and registries that never register the root at all (spec 12.1:
+// never suggest a hack the buyer cannot own — e.g. .il only offers co.il).
+export function suggestibleTlds(
+  meta: Map<string, TldMetaLite>,
+  web3: boolean
+): string[] {
+  const out: string[] = [];
+  for (const [tld, m] of meta) {
+    if (!web3 && m.tldType === "web3") continue;
+    if (!m.registrablePublicly) continue;
+    if (m.secondLevelRegistrable === false) continue;
+    out.push(tld);
+  }
+  return out;
+}
+
+// Ranking per spec 12.1: fewer dots first, then open-to-register tlds, then
+// price. closed endings sink to the bottom (grayed out by the consumer),
+// restricted and unverified-availability endings rank below open ones.
 // Label naturalness/recognizability is a TODO for the hack-fit score.
 export function rankCandidates(
   candidates: HackCandidate[],
@@ -63,7 +87,17 @@ export function rankCandidates(
   const score = (c: HackCandidate): number => {
     let s = (c.dotCount - 1) * 100;
     const m = meta.get(c.tld);
-    if (m && !m.registrablePublicly) s += 1000; // closed/restricted sink to the bottom
+    if (m && !m.registrablePublicly) {
+      s += 1000; // closed: never registrable by the buyer — grayed out
+    } else if (m && m.restrictionVerified === false) {
+      s += 400; // availability unverified: don't rank it like a confirmed-open one
+    } else if (m && m.restriction === "none" && m.restrictionVerified !== false) {
+      // open and researched: no penalty
+    } else if (m && m.registrationRoute === "intermediary") {
+      s += 150; // buyable via a trustee/local-agent service: small friction penalty
+    } else {
+      s += 250; // hard restriction (presence/residency/business entity): below intermediary-buyable
+    }
     s += Math.min(Number(m?.typicalPrice ?? 50), 100);
     return s;
   };

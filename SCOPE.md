@@ -8,7 +8,7 @@ the domain hack finder, split out of the master spec (donna-spec.md §12) onto t
 
 - candidate generation (spec 12.1): normalize the keyword, split against the tld list, rank (fewer dots, registrable tld, lower price)
 - availability checks (spec 12.2): rdap first, whois fallback, cache 1h available / 24h taken — skeleton
-- tld metadata (spec 12.3/12.4): hand-maintained table + seed, tld-type filters
+- tld metadata (spec 12.3/12.4): researched dataset with citations — every ccTLD classified as open / local_presence / residency / verification / closed / unknown (e.g. .er closed, .ca canadian presence, .us nexus, .de verification, .eu residency), platform flags (.ir sanctioned and potentially browser/platform-blocked, freenom-tld free-registry history, .su discontinued, .io/.ly sovereignty risk), google's treats-as-generic ccTLD list from the official doc, hsts-preloaded gTLDs, brand gtlds closed. data: `research/*.json` → `scripts/gen-tld-seed.mjs` → generated seed → `tld_meta`.
 - tld risk radar (spec 12.5): read-only sync of the existing **thetldradar** dataset (github.com/tinkrland/themailtell, `thetldradar` branch) — citations + dates kept exactly as published; licensing/credit is an open question (spec 20) before anything public shows it
 - hack fit score (spec 12.5.1): donna's own view of whether a hack works as a name (split naturalness, dotless twin, file-extension clash, autolinking, email fit...) — partial
 - search impact note (spec 12.6): google-treats-as-generic

@@ -1,0 +1,32 @@
+[
+ {
+  "tld": "il",
+  "route": "unavailable",
+  "intermediaryNote": "root .il is not registrable at all; only third-level (co.il, org.il...) \u2014 co.il itself is open worldwide via registrars, but a root hack like sm.il is impossible",
+  "intermediaryFee": null,
+  "businessPresenceAccepted": null,
+  "sourceUrl": "https://www.isoc.org.il/domains/",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "uk",
+  "route": "intermediary",
+  "intermediaryNote": "anyone may register at the .uk second level; registrants outside the uk must supply a uk address for service (registrars provide this; businesses qualify without uk presence)",
+  "intermediaryFee": null,
+  "businessPresenceAccepted": true,
+  "sourceUrl": "https://nominet.uk/wp-content/uploads/2025/01/sldr_rules_140507_final_0.pdf",
+  "accessed": "2026-10-18",
+  "verified": true
+ },
+ {
+  "tld": "ie",
+  "route": "intermediary",
+  "intermediaryNote": "proven connection to ireland required: irish-registered bodies qualify via vat/crn; foreign businesses qualify via registered trademark, trade with ireland, or related connection (iedr categories)",
+  "intermediaryFee": null,
+  "businessPresenceAccepted": true,
+  "sourceUrl": "https://www.iedr.ie/uploads/IEDR-RegistrationNaming-.IE-Namespace.pdf",
+  "accessed": "2026-10-18",
+  "verified": true
+ }
+]

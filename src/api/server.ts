@@ -4,6 +4,7 @@ import { migrate, pool } from "../db.js";
 import {
   generateHacks,
   rankCandidates,
+  suggestibleTlds,
 } from "../core/candidates.js";
 import { hackFit } from "../core/hack-fit.js";
 import { TLD_META_SEED, type TldMeta } from "../core/tld-meta.js";
@@ -22,6 +23,17 @@ function rowToMeta(r: any): TldMeta {
     renewalPrice: r.renewal_price,
     rdapSupported: r.rdap_supported,
     namespace: r.namespace,
+    secondLevelRegistrable: r.second_level_registrable,
+    thirdLevelNamespaces: r.third_level_namespaces ?? null,
+    registrationRoute: r.registration_route,
+    intermediaryNote: r.intermediary_note,
+    intermediaryFee: r.intermediary_fee,
+    businessPresenceAccepted: r.business_presence_accepted,
+    flags: r.flags ?? [],
+    sourceUrl: r.source_url,
+    accessed: r.accessed,
+    verified: r.verified,
+    restrictionVerified: r.restriction_verified,
   };
 }
 
@@ -33,14 +45,24 @@ async function seedIfEmpty() {
       `insert into tld_meta
          (tld, tld_type, operator_country, google_treats_as_generic,
           registrable_publicly, restriction, restriction_note, risk_note,
-          typical_price, renewal_price, rdap_supported, namespace)
-       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+          typical_price, renewal_price, rdap_supported, namespace,
+          flags, source_url, accessed, verified, restriction_verified,
+          registration_route, intermediary_note, intermediary_fee,
+          business_presence_accepted, second_level_registrable,
+          third_level_namespaces)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23)
        on conflict (tld) do nothing`,
       [
         m.tld, m.tldType, m.operatorCountry ?? null,
         m.googleTreatsAsGeneric ?? null, m.registrablePublicly, m.restriction,
         m.restrictionNote, m.riskNote ?? null, m.typicalPrice ?? null,
         m.renewalPrice ?? null, m.rdapSupported ?? null, m.namespace ?? null,
+        JSON.stringify(m.flags ?? []), m.sourceUrl ?? null, m.accessed ?? null,
+        m.verified ?? false, m.restrictionVerified ?? false,
+        m.registrationRoute ?? null, m.intermediaryNote ?? null,
+        m.intermediaryFee ?? null, m.businessPresenceAccepted ?? null,
+        m.secondLevelRegistrable ?? null,
+        m.thirdLevelNamespaces ? JSON.stringify(m.thirdLevelNamespaces) : null,
       ]
     );
   }
@@ -71,18 +93,27 @@ async function main() {
 
   app.get("/health", async () => ({ ok: true, service: "domainhacks-api" }));
 
-  app.get("/api/tlds", async () =>
-    (await pool.query(`select * from tld_meta order by tld`)).rows
-  );
+  app.get("/api/tlds", async (req) => {
+    const q = req.query as { type?: string };
+    const params: any[] = [];
+    let where = "";
+    if (q.type) {
+      params.push(q.type);
+      where = `where tld_type = $${params.length}`;
+    }
+    const { rows } = await pool.query(
+      `select * from tld_meta ${where} order by tld`,
+      params
+    );
+    return rows.map(rowToMeta);
+  });
 
   app.get("/api/hacks", async (req) => {
     const q = req.query as { keyword?: string; web3?: string };
     const keyword = q.keyword ?? "";
     const web3 = q.web3 === "1" || q.web3 === "true";
     const meta = await loadTldMeta();
-    const tlds = [...meta.values()]
-      .filter((m) => web3 || m.tldType !== "web3")
-      .map((m) => m.tld);
+    const tlds = suggestibleTlds(meta, web3);
     const candidates = generateHacks(keyword, tlds);
     const ranked = rankCandidates(candidates, meta);
     const results = ranked.map((c) => {
@@ -91,8 +122,21 @@ async function main() {
         ...c,
         tldType: m.tldType,
         registrablePublicly: m.registrablePublicly,
+        notRegistrableNote: m.registrablePublicly
+          ? null
+          : m.secondLevelRegistrable === false
+            ? `root not offered${m.thirdLevelNamespaces?.length ? ` — only ${m.thirdLevelNamespaces.join(", ")}` : ""}`
+            : "not registrable",
+        secondLevelRegistrable: m.secondLevelRegistrable ?? null,
+        thirdLevelNamespaces: m.thirdLevelNamespaces ?? null,
         restriction: m.restriction,
         restrictionNote: m.restrictionNote,
+        restrictionVerified: m.restrictionVerified ?? false,
+        registrationRoute: m.registrationRoute ?? null,
+        intermediaryNote: m.intermediaryNote ?? null,
+        intermediaryFee: m.intermediaryFee ?? null,
+        businessPresenceAccepted: m.businessPresenceAccepted ?? null,
+        flags: m.flags ?? [],
         riskNote: m.riskNote ?? null,
         typicalPrice: m.typicalPrice ?? null,
         // TODO (spec 12.2): rdap first / whois fallback with 1h-avail / 24h-taken cache
@@ -103,6 +147,8 @@ async function main() {
               ? "search: generic"
               : `search: geotargeted${m.operatorCountry ? ` to ${m.operatorCountry}` : ""}`
             : null,
+        sourceUrl: m.sourceUrl ?? null,
+        accessed: m.accessed ?? null,
         hackFit: hackFit(c),
         ...(m.tldType === "web3"
           ? {

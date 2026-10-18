@@ -1,0 +1,94 @@
+[
+ {
+  "tld": "ir",
+  "flags": [
+   "sanctioned",
+   "browser_or_platform_blocks"
+  ],
+  "note": "us sanctions on iran; most western registrars/payment processors refuse .ir; some platforms block or flag .ir sites",
+  "sourceUrl": "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions/",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "ru",
+  "flags": [
+   "sanctioned"
+  ],
+  "note": "russia-related sanctions; registry risk elevated for foreign registrants",
+  "sourceUrl": "https://ofac.treasury.gov/sanctions-programs-and-country-information/russia-related-sanctions/",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "su",
+  "flags": [
+   "discontinued",
+   "sanctioned"
+  ],
+  "note": "legacy soviet tld; still sold by russian registrars; retirement periodically discussed",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.su",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "tk",
+  "flags": [
+   "free_registry_history"
+  ],
+  "note": "freenom free registry history; free tier suspended after the 2023 litigation/verdict; .tk now paid via registrars",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.tk",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "ml",
+  "flags": [
+   "free_registry_history"
+  ],
+  "note": "freenom free registry history; free registrations suspended",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.ml",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "ga",
+  "flags": [
+   "free_registry_history"
+  ],
+  "note": "freenom free registry history; gabon reclaimed the registry; paid registrations via registrars",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.ga",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "cf",
+  "flags": [
+   "free_registry_history"
+  ],
+  "note": "freenom free registry history; registrations suspended/reactivated; verify current status",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.cf",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "gq",
+  "flags": [
+   "free_registry_history"
+  ],
+  "note": "freenom free registry history; availability via registrars uncertain",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.gq",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "io",
+  "flags": [
+   "sovereignty_risk"
+  ],
+  "note": "chagos archipelago sovereignty: uk-mauritius agreement (2024) to transfer the islands raised long-term questions about .io's future; it remains fully operational",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.io",
+  "accessed": "2026-10-18"
+ },
+ {
+  "tld": "ly",
+  "flags": [
+   "sovereignty_risk"
+  ],
+  "note": "libyan registry; political instability and past seizures of .ly domains (e.g. vb.ly)",
+  "sourceUrl": "https://en.wikipedia.org/wiki/.ly",
+  "accessed": "2026-10-18"
+ }
+]

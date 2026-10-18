@@ -19,4 +19,4 @@ QUERIT_API_KEY / FIRECRAWL_API_KEY / TAVILY_API_KEY — see SCOPE.md. delivered 
 - ESM + node 22 + tsx; no build step; `npm run typecheck` for tsc.
 - core logic is pure and unit-tested (`src/core`); I/O lives in `src/api` and `src/workers`.
 - new migration: `src/db/migrations/00N_*.sql` — the runner records applied names in `schema_migrations`.
-- tld metadata is hand-maintained (`src/core/tld-meta.ts` seed + `tld_meta` table); verify prices and rules before launch.
+- tld metadata comes from researched datasets: `research/*.json` (ccTLD availability, gTLD rows, google's generic-cctld list, platform flags — every row carries its citation + access date) → `node scripts/gen-tld-seed.mjs` regenerates `src/core/tld-meta-seed.generated.ts` → seeded into `tld_meta` at boot. never hand-edit the generated file; fix the research json and regenerate. prices are ballpark usd where observed — verify before launch.
