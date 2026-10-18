@@ -1,0 +1,22 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/health",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "QUERIT_API_KEY",
+      "description": "Querit — deep-research queries for tld restrictions, barriers and ownership questions (see SCOPE.md)",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "FIRECRAWL_API_KEY",
+      "description": "Firecrawl — registrar pricing page observations (first-year vs renewal, with dates)",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "TAVILY_API_KEY",
+      "description": "Tavily — web search for registry policy changes and news",
+      "requiredAtBoot": false
+    }
+  ]
+}
