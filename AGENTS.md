@@ -6,8 +6,8 @@ donna ("dear domain") — backend only. full product spec: `donna-spec.md`; what
 ## the `domainhacks` branch
 `git checkout domainhacks` — the domain hack finder backend (spec 12): candidates, hack-fit, tld metadata, availability workers. this branch is the donna agent backend only; the two backends are deliberately separate.
 
-## run (sandbox)
-- `docker compose -f docker-compose.base44.yml up -d` — api on http://localhost:3000, postgres (db `donna`), worker, one-shot migrate.
+## run (dev)
+- `docker compose up -d` — api on http://localhost:3000, postgres (db `donna`), worker, one-shot migrate.
 - deps install at container start (`npm install`); node_modules live in named volumes, never in the repo.
 - health: `curl localhost:3000/health`
 
@@ -17,10 +17,10 @@ donna ("dear domain") — backend only. full product spec: `donna-spec.md`; what
 3. `curl -X POST localhost:3000/api/campaigns -H 'content-type: application/json' -d '{"fqdn":"example.com","maxOffer":30}'` → campaign in state `deployed`
 4. `curl localhost:3000/api/campaigns/<id>` → state + events timeline
 
-tests: `docker compose -f docker-compose.base44.yml exec api npm test`
+tests: `docker compose exec api npm test`
 
 ## research stack (optional env keys — nothing required to boot)
-QUERIT_API_KEY / FIRECRAWL_API_KEY / TAVILY_API_KEY — see SCOPE.md. delivered via `/run/base44/app.env` (listed last in compose `env_file:` so dashboard values always win). handlers check presence via `config.research` and log not-configured instead of failing.
+QUERIT_API_KEY / FIRECRAWL_API_KEY / TAVILY_API_KEY — see SCOPE.md. delivered via the local `.env` file (compose `env_file:`). handlers check presence via `config.research` and log not-configured instead of failing.
 
 ## payments boundary
 spec 14 is deferred: campaigns are created already-`deployed` at the external payment boundary. no charging code exists and none should be added until the fee saas is in scope.

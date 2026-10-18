@@ -1,5 +1,6 @@
-# Base44 sandbox dev environment — donna backend (api + worker + postgres).
-# Source is bind-mounted; deps install at container start; tsx watch live-reloads.
+# dev environment — donna backend (api + worker + postgres).
+# source is bind-mounted; deps install at container start; tsx watch live-reloads.
+# research keys (firecrawl/tavily/querit) come from a local .env file — optional.
 services:
   postgres:
     image: postgres:16-alpine
@@ -40,7 +41,7 @@ services:
       PORT: "3000"
       DATABASE_URL: postgres://donna:donna@postgres:5432/donna
     env_file:
-      - path: /run/base44/app.env
+      - path: .env
         required: false
     command: sh -ec "npm install --no-audit --no-fund && exec npm run dev"
     ports:
@@ -68,7 +69,7 @@ services:
       DATABASE_URL: postgres://donna:donna@postgres:5432/donna
       HEARTBEAT_FILE: /tmp/donna-worker-heartbeat
     env_file:
-      - path: /run/base44/app.env
+      - path: .env
         required: false
     command: sh -ec "npm install --no-audit --no-fund && exec npm run worker"
     depends_on:
