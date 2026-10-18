@@ -15,16 +15,44 @@ which ones you can actually own. **donna**, the domain broker
 assistant: you point her at a taken domain, she works out who owns it,
 whether they're using it, contacts them politely on your behalf, and
 negotiates a small purchase. both assistants cover the same ground
-from opposite ends, and share the same researched datasets underneath.
-the product ships as a web app and a cli.
+from opposite ends, and dom feeds donna: when a hack you want is
+taken, dom runs the precursor check and hands the domain over as a
+ready-made campaign.
 
 this is the long tail of domain decisions: hobbyists, side projects,
 micro-brands, where a $199-minimum broker or a $2,000 aftermarket
 listing is nonsense (root README.md). flat fee per attempt, flat fee
-on completion, no commission on the buying cost, so the product's only
-incentive is getting you the domain at the cheapest price possible.
-exact rates are set at launch. the discovery tools that lead into the
-paid service are free.
+on completion, no commission on the buying cost, so the product's
+only incentive is getting you the domain at the cheapest price
+possible. exact rates are set at launch. the discovery tools that
+lead into the paid service are free.
+
+## a product, not a service
+
+everything about deardomain is a product surface, and that is the
+pricing model explained. there is no human you email, no intake call,
+no quote. you sign in, you use the web app or the cli, the same
+researched datasets underneath both, and every action is either free
+discovery or a flat-fee campaign. the product ships as a web app and
+a cli talking to two independent backends, dom and donna, each with
+its own stack, data and release cadence, fronted as one product (root
+README.md). when something changes in the world, a registry policy
+page, a sanctions list, google's treatment of a country code, it is
+handled the way a saas handles it: an offline research pass with
+cited, dated sources, baked into the dataset, shipped to every user
+like a release. the product runs on researched data, not vibes, and
+every verdict you see traces back to a citation.
+
+each surface also has a scoped job, enforced in code. dom never
+talks about pricing: its job is fit and ownability, not what a
+registrar charges, and a registry-premium name gets the badge without
+a number (domainhacks branch SCOPE.md). donna never shows contact
+addresses before the buyer pays; she counts routes and gates on
+confidence. a reserved-mission ending (.gov, .mil, .edu, .int, .arpa)
+never appears in dom's results and donna's intake refuses it outright
+with the reason (src/core/reserved.ts on the donna branch). this is
+what flat fees buy you: the product can afford to be disciplined
+because nothing about it is hand-made.
 
 ## the moat: who is actually on the other end
 
@@ -63,34 +91,45 @@ away, not into a fake micro-deal.
 dom answers: how can i spell this word as a domain? enter a word or
 phrase; dom splits it against all 1,437 delegated endings
 (data.iana.org) and ranks the results by what you can actually own.
+it never talks about pricing; its job is fit and ownability.
 
-it starts from registrability, not spelling: an ending that reads
-perfectly but can't be registered is never suggested, and the
-excluded matches are surfaced with the reason instead of silently
-hidden (never opened like .sj and .bv, third-level-only like .il,
-closed or sanctioned like .er and .ir, brand-only gtlds). each
-candidate shows its registration barrier and route, direct or
-trustee-mediated with the fee, and the cheapest observed registration
-and renewal price, so a hack's total cost of ownership is visible
-before the checkout, not after.
+it starts from registrability, not spelling. an ending that reads
+perfectly but can't be registered is never suggested, and the excluded
+matches are surfaced with the reason instead of silently hidden:
+never opened (.sj, .bv), third-level-only (.il: you can buy co.il, not
+a .il root), reserved-mission (.gov, .mil, .edu, .int never appear),
+closed or sanctioned (.er, .ir), brand-only gtlds. each candidate
+shows its registration barrier and route, direct or
+intermediary/trustee with the fee, and registry-premium names carry
+the badge, never a price.
 
-then dom judges the split as a name, not just as a url: does the dot
-fall at a natural break, does it survive being spoken aloud, does it
-collide with a file extension like .zip or .mov, does it autolink in
-chat apps, does it read cleanly as an email address. and it tells the
-truth about endings that sales pages don't: google's
+then dom judges the split as a name, not just as a url, with a
+say-it-aloud taxonomy that ranks how the word survives being spoken:
+clean syllable boundaries first, dots that cut a single phoneme or
+double a consonant flagged gently, and cluster endings the listener
+must blend to reconstruct the word ranked last. multi-dot chains like
+fi.ni.sh are classified as chains, not subdomains. each hack carries
+its axis: linguistic, where the ending completes the word (tra.sh,
+rad.io), or command, where the label is a known cli tool and the
+script-suffix reading is the point (brew.sh) and the file-extension
+clash is waived as a penalty, though the flag still shows, because
+monty.py reads as a python file and parsers, filters and clipboards
+can mangle the string.
+
+and it tells the truth about endings that sales pages don't: google's
 generic-vs-geotargeted treatment, plus a per-ending risk radar
 (sovereignty concerns, sanctions, free-registry history, discontinued
 endings), toggleable alongside the main results. compare mode weighs
-shortlisted candidates side by side; risk radar mode browses endings
-by risk profile.
+shortlisted candidates side by side, barrier, fit and risk at a
+glance; risk radar mode browses endings by risk profile.
 
 default coverage is the latin alphabet, since that's where the
 purchasable, resolvable web is. web3 and punycode hacks sit behind
-off-by-default toggles, labeled for what they are: ens and unstoppable
-names don't open in a normal browser, and idn endings render
-differently by client. available names get a registrar link; taken
-ones lead into donna's paid outreach.
+off-by-default toggles, labeled for what they are. taken hacks sit
+behind a toggle too: available names show by default, and a taken
+hack isn't a dead end, it's a handoff. toggle it on and dom runs the
+precursor check, the free part of donna's pre-check, and hands the
+domain to donna as a ready-made campaign.
 
 ## donna, the domain broker assistant
 
@@ -104,9 +143,14 @@ codes like redemptionperiod and pendingdelete), the dns shape (a real
 mailbox or a forwarding hobby setup, parked or dormant nameservers),
 the website if any (parked, for-sale with asking price, placeholder,
 or live and active, judged from content and freshness signals), the
-wayback history, and public mentions from github and the web. contact
-routes are counted and never shown before the buyer pays. every
-verdict traces back to cited, dated sources.
+wayback history, and public mentions from github and the web. she
+tracks domains through what the product calls domain purgatory, the
+lifecycle between taken and gone: a taken-but-expiring domain is a
+watch, not a dead end, and the free tier shows the rdap-visible stage
+while deeper history runs in the paid pre-check (domainhacks branch
+SCOPE.md, research/domain-purgatory.md). contact routes are counted
+and never shown before the buyer pays. every verdict traces back to
+cited, dated sources.
 
 the outreach is polite by construction, not by policy
 (donna-spec.md §2):
@@ -131,9 +175,9 @@ src/core/negotiation.ts on the donna branch), and a hard ceiling that
 is never revealed and never exceeded. if the seller's ask goes above
 it, she stops and hands the thread to you. the suggested closing
 order is transfer first, payment second, with registrar walkthroughs
-and rdap monitoring until the registrant changes. when a campaign
-ends without a deal, the expiry watch follows the domain to its drop
-date and tells you when to backorder.
+and rdap monitoring until the registrant changes. when a campaign ends
+without a deal, the expiry watch follows the domain through purgatory
+to its drop date and tells you when to backorder.
 
 you are never in the money flow with us. you pay the seller directly,
 through paypal, wise, or whatever you both agree. deardomain charges
@@ -152,8 +196,8 @@ welcome, in the order their pain arrives.
   that answer is free.
 - **the hack hunter.** dom does the splitting, scoring and
   truth-telling about endings, so the clever name you found doesn't
-  come with a renewal surprise or a geotargeting footnote. when the
-  perfect split is taken anyway, the same results page leads into
+  come with a trustee-fee surprise or a geotargeting footnote. when
+  the perfect split is taken anyway, the same results page leads into
   donna's ask-the-owner service.
 - **the returner.** you let a name lapse once. the expiry watch means
   it never happens silently again.
@@ -161,8 +205,10 @@ welcome, in the order their pain arrives.
   .io sitting idle in someone else's account, at micro-deal prices.
 
 not for: trademark disputes, four-figure negotiations, professional
-portfolio holders who know what they're sitting on. the pre-check
-flags all three and hands them back (donna-spec.md §9, §13).
+portfolio holders who know what they're sitting on, reserved-mission
+endings. the pre-check flags the first three and hands them back
+(donna-spec.md §9, §13), and the last is refused at intake
+(src/core/reserved.ts on the donna branch).
 
 ## the honest limits
 
@@ -177,8 +223,11 @@ flags all three and hands them back (donna-spec.md §9, §13).
 - some registrars lock transfers for 60 days after a registration or
   registrant change. donna detects it and tells both sides
   (donna-spec.md §10).
-- dom's default coverage is latin-script only; web3 and punycode hacks
-  sit behind labeled, off-by-default toggles.
+- dom shows no prices anywhere: fit and ownability, never what a
+  registrar charges. the free purgatory view shows only the
+  rdap-visible stage; deeper history is a paid signal.
+- dom's default coverage is latin-script only; web3, punycode and even
+  taken hacks sit behind labeled, off-by-default toggles.
 - donna won't chase web3 names in v1, won't send automated social dms
   ever, and won't contact anyone on the suppression list.
 - she is an ai, in every message, by law and by preference. california

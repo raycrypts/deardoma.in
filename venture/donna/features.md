@@ -52,6 +52,10 @@ set at launch.
   buyer gets the full thread, a summary, a suggested reply, and
   one-click options: raise max, send final offer, close
   (donna-spec.md §9).
+- **the precursor check intake.** campaigns don't only start from
+  the dashboard: dom's taken-hack view runs the free pre-check
+  signals and hands donna a ready-made campaign context (root
+  README.md).
 - **the closer.** written terms to both sides, transfer before payment
   (registrar push or auth code), step-by-step guides per registrar,
   60-day transfer-lock detection, rdap monitoring until the registrant
@@ -59,7 +63,16 @@ set at launch.
   (donna-spec.md §10, §14).
 - **the expiry watch.** daily rdap checks as expiry approaches, an
   alert on pendingdelete, pointers to backorder services
-  (donna-spec.md §11).
+  (donna-spec.md §11). domain purgatory awareness: rdap status
+  classified into stages (auto-renew grace / redemption / pending
+  delete), taken-but-expiring treated as a watch, not a dead end; the
+  free tier shows the rdap-visible stage, deeper history (whoisfreaks/
+  whoisxml/securitytrails) gated to the paid pre-check (domainhacks
+  branch SCOPE.md, research/domain-purgatory.md).
+- **the reserved-mission guard.** .gov, .mil, .edu, .int and .arpa are
+  never registrable by the public, so the pre-check and campaign
+  intake refuse them outright with the reason (src/core/reserved.ts
+  on the donna branch).
 - **deliverability protection.** cold outreach never comes from the
   brand domain; sending reputation is protected as deliberately as
   the outreach is polite (root README.md).

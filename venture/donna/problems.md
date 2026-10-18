@@ -86,7 +86,10 @@ on the donna branch).
 the owner declines or vanishes, and the domain still expires someday.
 you have to remember to check, every year, forever.
 
-the answer: the expiry watch. rdap status checked daily as the expiry
-date approaches, and when the domain enters pendingdelete, you get
-pointed at backorder and drop-catching services. no response isn't a
-dead end; it's a calendar entry.
+the answer: the expiry watch, and the product's own view of the
+domain lifecycle, domain purgatory. rdap status is classified into
+stages (auto-renew grace, redemption, pending delete) and checked
+daily as the expiry date approaches, and when the domain enters
+pendingdelete, you get pointed at backorder and drop-catching
+services. taken-but-expiring is a watch, not a dead end; no response
+isn't a dead end either. it's a calendar entry.
