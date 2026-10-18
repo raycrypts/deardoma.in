@@ -155,12 +155,28 @@ test("file-extension clash is a ranking penalty, not an exclusion (spec 12.5.1 #
   ]);
   const ranked = rankCandidates(
     [
-      { fqdn: "monty.py", tld: "py", dotCount: 1 } as never,
-      { fqdn: "monty.in", tld: "in", dotCount: 1 } as never,
+      { fqdn: "monty.py", label: "monty", tld: "py", dotCount: 1 } as never,
+      { fqdn: "monty.in", label: "monty", tld: "in", dotCount: 1 } as never,
     ],
     meta
   );
   // monty.py reads as a python file: the clash ending ranks below the clean one
   assert.equal(ranked[0].fqdn, "monty.in");
   assert.equal(ranked[1].fqdn, "monty.py");
+});
+
+test("say-it-aloud feeds the ranking: runn.ing outranks runni.ng", () => {
+  const meta = new Map([
+    ["ing", { registrablePublicly: true, restriction: "none", restrictionVerified: true }],
+    ["ng", { registrablePublicly: true, restriction: "local_presence", restrictionVerified: true, registrationRoute: "intermediary" }],
+  ]);
+  const ranked = rankCandidates(
+    [
+      { fqdn: "runni.ng", label: "runni", tld: "ng", dotCount: 1 } as never,
+      { fqdn: "runn.ing", label: "runn", tld: "ing", dotCount: 1 } as never,
+    ],
+    meta
+  );
+  assert.equal(ranked[0].fqdn, "runn.ing");
+  assert.equal(ranked[1].fqdn, "runni.ng");
 });

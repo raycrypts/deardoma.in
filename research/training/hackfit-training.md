@@ -18,7 +18,9 @@ programmatic, zero hallucination: every candidate domain in the seed is computed
 - excluded cases, never suggested, always reasoned: hacker -> hack.er (.er never opened), pencil -> penc.il (.il sells only third-level names), mailer -> mail.er
 - honest negatives with near-misses: photos -> no direct split, but singular photo -> pho.to; israel, example, setup, backup -> no registrable ending exists, said plainly
 
-row schema: `instruction` (task rules + query) and `response` (json: query, input_type, candidates[{domain, tld, fit_class, rank, registrability, restriction, notes}], excluded[{domain, tld, reason}], near_misses[{domain, note}]). fit classes: exact / phrase / morpheme / digraph / phonetic / chain / infix.
+row schema: `instruction` (task rules + query) and `response` (json: query, input_type, candidates[{domain, tld, fit_class, rank, registrability, restriction, notes}], excluded[{domain, tld, reason}], near_misses[{domain, note}]).
+
+**v2 (2026-10-18, corrected after the say-aloud build landed):** fit classes now mirror the implemented `sayItAloud` taxonomy: exact / phrase / morpheme / digraph_split (the dot cuts a phoneme straddling the boundary: lig.ht, tric.ky) / doubled_consonant (chess.shop) / vowel_seam (delicio.us) / blend_required (runni.ng — .ng cannot start an english syllable) / phonetic / chain. two data-driven corrections landed with it: .th is third-level-only (thnic sells co.th/in.th/etc.), so the north/south/health/earth/worth family moved to the excluded class — "linguistically perfect but the registry never sells the root" — and .za turned out to be the same (piz.za excluded). wi.sh/wat.ch teach the counter-lesson: digraph-leading tlds read naturally because the digraph stays whole. seed v2 uploaded as dataset 301b6cad-2f9b-4a29-9b40-19640bf5f5d1; vet_invented.py now enforces secondLevelRegistrable and the implemented fit-class set.
 
 ### 2. invented expansion (adaptionlabs `datasets.invent`, 500 rows, estimated 50 of 2202 credits)
 

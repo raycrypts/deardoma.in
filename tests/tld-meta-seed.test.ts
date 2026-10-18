@@ -148,3 +148,13 @@ test("no duplicate tlds in the seed", () => {
   const tlds = TLD_META_SEED.map((m) => m.tld);
   assert.equal(new Set(tlds).size, tlds.length);
 });
+
+// the finder must know exactly what exists in the global dns root zone:
+// every seed ending is a real IANA root tld (except the 5 intentional
+// web3 pseudo-namespaces), and every root tld is in the seed.
+import { verifyRootZone } from "../scripts/verify-root-zone.mjs";
+
+test("seed == live IANA root zone (data.iana.org), no invented endings", () => {
+  const { ok, notInRoot, missingFromSeed } = verifyRootZone();
+  assert.ok(ok, `drift: notInRoot=${notInRoot.join(",")} missingFromSeed=${missingFromSeed.join(",")}`);
+});

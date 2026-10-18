@@ -2,14 +2,27 @@
 """build the dom hack-fit seed training set (not-so-straightforward inputs)."""
 import json
 
-d = json.load(open('/tmp/hacktrain/suggestible.json'))
-SUGGEST, META = set(d['suggestible']), d['meta']
+import os
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(HERE)
+def rj(p): return json.load(open(os.path.join(REPO, p)))
+cc_all = rj('cctlds.json')
+gt_all = rj('gtlds.json')
+_second = rj('cctld-second-level.json')
+SUGGEST, META = set(), {}
+for c in cc_all:
+    if c['availability'] in ('open','restricted'):
+        SUGGEST.add(c['tld']); META[c['tld']] = dict(kind='cctld', availability=c['availability'], restriction=c['restriction'])
+for g in gt_all:
+    if g.get('restriction') == 'none' and not g.get('sponsored'):
+        SUGGEST.add(g['tld']); META[g['tld']] = dict(kind='gtld', availability='open', restriction='none')
+for _r in _second:  # third-level-only registries are never suggestible
+    if _r.get('secondLevelRegistrable') is False: SUGGEST.discard(_r['tld'])
 
 # full tld universe incl. excluded, for excluded-match labeling
 import sys
 sys.path.insert(0, '/tmp/deardomain')
-cc = json.load(open('/tmp/deardomain/research/cctlds.json'))
-gt = json.load(open('/tmp/deardomain/research/gtlds.json'))
+cc, gt = cc_all, gt_all
 ALL, WHY_EXCLUDED = {}, {}
 for c in cc:
     ALL[c['tld']] = c
@@ -22,8 +35,22 @@ for g in gt:
 # third-level-only special case
 WHY_EXCLUDED['il'] = 'no root registrations: isoc-il sells only third-level names (co.il etc.)'
 ALL.setdefault('il', {'tld': 'il'})
+# third-level-only registries (research/cctld-second-level.json)
+for _r in _second:
+    if _r.get('secondLevelRegistrable') is False:
+        WHY_EXCLUDED.setdefault(_r['tld'], 'no root registrations: registry sells only third-level names (' + ', '.join(_r.get('thirdLevelNamespaces', [])[:3]) + '...)')
 
-RANK = {'exact': 1, 'phrase': 1, 'morpheme': 1, 'chain': 2, 'digraph': 2, 'phonetic': 3, 'infix': 4}
+RANK = {'exact': 1, 'phrase': 1, 'morpheme': 1, 'chain': 2, 'digraph_split': 2, 'doubled_consonant': 3, 'vowel_seam': 3, 'phonetic': 3, 'blend_required': 4, 'infix': 4}
+DIGRAPHS = {'th','sh','ch','ph','wh','ck','gh','ng','qu'}
+UNSPEAKABLE_STARTS = {'ng','nk','gn','ps','pn','rh','tm'}
+
+def boundary_class(stem, tld):
+    a, b = stem[-1:], tld[:1]
+    if tld[:2] in UNSPEAKABLE_STARTS: return 'blend_required'
+    if a + b in DIGRAPHS: return 'digraph_split'   # dot cuts one phoneme straddling the boundary
+    if a == b and a not in 'aeiouy': return 'doubled_consonant'  # e.g. piz.za
+    if a in 'aeiouy' and b in 'aeiouy': return 'vowel_seam'      # e.g. delicio.us
+    return 'exact'
 
 def candidates(word):
     w = word.replace(' ', '').lower()
@@ -55,23 +82,18 @@ def chains(word):
     return out
 
 def fit_class(word, c, cat):
-    w = word.replace(' ', '').lower()
     tld, stem = c['tld'], c['stem']
-    if cat == 'phrase': cls = 'phrase'
-    elif tld in ('ing','ed','ly','ment','tion','able'):
-        cls = 'morpheme'
-    elif any(stem.endswith(suf[:len(suf)-len(tld)]) and tld == suf[len(suf)-len(tld):]
-             for suf in ('ing','ed','er','ion') for _ in [0] if len(tld) < len(suf)):
-        cls = 'infix'
-    elif len(tld) >= 2 and stem[-1:] + tld[0] in ('th','sh','ch','ph','wh','ck'):
-        cls = 'digraph'
-    elif w == stem + tld and (word.endswith('s') and not tld.endswith('s')) or (len(w) - len(stem+tld) != 0):
-        cls = 'exact'
-    else:
-        cls = 'exact'
-    # phonetic: the dot deletes or alters sound for inflected queries
-    if cat == 'phonetic': cls = 'phonetic'
-    return cls
+    b = boundary_class(stem, tld)  # chain candidates are labeled separately in build_row
+    if cat == 'phrase':
+        # phrase inputs get their boundary class when it's the interesting verdict
+        return b if b in ('digraph_split','doubled_consonant','vowel_seam','blend_required') else 'phrase'
+    if cat == 'phonetic': return 'phonetic'
+    if cat in ('suffix','singular') and tld in ('ing','ed','ly','ment','tion','able'):
+        # only a morpheme split when the input isn't a whole word ending in those letters
+        pass
+    if tld == 'ing' and stem.endswith(('n','r','l','s','m','p','t')) and cat != 'suffix':
+        return 'morpheme'  # runn.ing: the split respects the -ing morpheme
+    return b
 
 def build_row(query, cat):
     w = query.replace(' ', '').lower()
@@ -106,10 +128,12 @@ def build_row(query, cat):
     return resp
 
 INPUTS = [
- ("hack","singular"), ("dom","singular"), ("smash","singular"), ("wish","digraph"),
+ ("hack","singular"), ("dom","singular"), ("smash","singular"), ("wish","suffix"),
  ("running","verb-ing"), ("listening","verb-ing"), ("coding","verb-ing"), ("smiling","verb-ing"),
- ("north","digraph"), ("south","digraph"), ("health","digraph"), ("earth","digraph"), ("worth","digraph"),
- ("gurus","phonetic"), ("cameras","phonetic"), ("ideas","phonetic"),
+ ("light","digraph"), ("tricky","digraph"), ("watch","digraph"),  # real straddles: lig.ht cuts gh, tric.ky cuts ck, wat.ch reads clean
+ ("north","negative-excluded"), ("health","negative-excluded"), ("earth","negative-excluded"), ("worth","negative-excluded"),  # .th is third-level-only
+ ("chess shop","phrase"), ("sun news","phrase"),  # doubled-consonant straddles: chess.shop, sun.news
+ ("gurus","phonetic"), ("cameras","phonetic"), ("ideas","phonetic"), ("pizza","suffix"),
  ("italy","suffix"), ("ireland","suffix"), ("wonderland","suffix"), ("poland","suffix"),
  ("home studio","phrase"), ("make money","phrase"), ("read it","phrase"), ("travel italy","phrase"),
  ("stay gold","phrase"), ("domain hacks","phrase"), ("not possible","phrase"), ("virtual shelf","phrase"),
@@ -127,13 +151,13 @@ INSTR = ("find every domain hack for the query '%s'. rules: only real, second-le
          "with query, candidates (domain, tld, fit_class, rank, registrability, restriction, notes), "
          "excluded, and near_misses (inflection-adjusted readings of the query that do have a "
          "registrable split, e.g. a plural whose singular form works). fit classes: exact, phrase, "
-         "morpheme, digraph, phonetic, chain (multi-dot like del.icio.us). rank 1 reads most naturally.")
+         "morpheme, digraph_split (dot cuts a phoneme straddling the boundary: lig.ht), doubled_consonant (chess.shop), vowel_seam (delicio.us), blend_required (tld cannot start an english syllable: runni.ng), phonetic, chain (multi-dot like del.icio.us). rank 1 reads most naturally; excluded endings (third-level-only like .th, closed like .er) are listed with reasons, never suggested.")
 
 rows = []
 for q, cat in INPUTS:
     resp = build_row(q, cat)
     rows.append(dict(instruction=INSTR % q, response=json.dumps(resp, indent=1)))
-with open('/tmp/hacktrain/hackfit-seed.jsonl', 'w') as f:
+with open(os.path.join(HERE, 'hackfit-seed.jsonl'), 'w') as f:
     for r in rows:
         f.write(json.dumps(r) + "\n")
 print("rows:", len(rows))

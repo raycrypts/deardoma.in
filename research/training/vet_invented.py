@@ -9,9 +9,12 @@ rules (per research/training/hackfit-training.md):
 """
 import json, sys
 
-sys.path.insert(0, '/tmp/deardomain')
-cc = json.load(open('/tmp/deardomain/research/cctlds.json'))
-gt = json.load(open('/tmp/deardomain/research/gtlds.json'))
+import os
+HERE = os.path.dirname(os.path.abspath(__file__))
+PARENT = os.path.dirname(HERE)  # research/
+sys.path.insert(0, PARENT)
+cc = json.load(open(os.path.join(PARENT, 'cctlds.json')))
+gt = json.load(open(os.path.join(PARENT, 'gtlds.json')))
 UNIVERSE = {c['tld'] for c in cc} | {g['tld'] for g in gt}
 WHY_EXCLUDED = {c['tld'] for c in cc if c.get('availability') == 'closed'}
 WHY_EXCLUDED |= {g['tld'] for g in gt if g.get('restriction') == 'closed'}
@@ -19,6 +22,12 @@ WHY_EXCLUDED.add('il')
 
 SUGGEST = {c['tld'] for c in cc if c.get('availability') in ('open', 'restricted')}
 SUGGEST |= {g['tld'] for g in gt if g.get('restriction') == 'none' and not g.get('sponsored')}
+# third-level-only registries (research/cctld-second-level.json): root not sold
+_second = json.load(open(os.path.join(PARENT, 'cctld-second-level.json')))
+for _r in _second:
+    if _r.get('secondLevelRegistrable') is False: SUGGEST.discard(_r['tld'])
+# say-aloud taxonomy: fit classes must come from the implemented set
+FIT_CLASSES = {'exact','phrase','morpheme','digraph_split','doubled_consonant','vowel_seam','blend_required','phonetic','chain','infix'}
 
 def tld_of(domain):
     return domain.rsplit('.', 1)[-1].lower()
@@ -38,6 +47,8 @@ def vet_row(row):
             reasons.append(f'invented tld .{t}')
         elif t not in SUGGEST:
             reasons.append(f'unsuggestible candidate .{t}')
+        if c.get('fit_class') not in FIT_CLASSES:
+            reasons.append(f"unknown fit_class {c.get('fit_class')!r}")
     for e in resp.get('excluded', []):
         t = tld_of(e.get('domain', ''))
         if t not in UNIVERSE:

@@ -1,4 +1,6 @@
 // Domain hack candidate generation (spec 12.1). Pure functions — no I/O.
+import { sayItAloud } from "./hack-fit.js";
+
 export interface HackCandidate {
   fqdn: string; // full hack, e.g. delicio.us or de.licio.us
   label: string; // registrable label part
@@ -148,6 +150,7 @@ export function rankCandidates(
     } else if (m?.fileExtSeverity === "medium") {
       s += 100; // recognized in dev/technical contexts (.tcl, .makefile)
     }
+    s += sayItAloud(c.label, c.tld).penalty; // spoken-aloud friction at the boundary
     s += Math.min(Number(m?.typicalPrice ?? 50), 100);
     return s;
   };
