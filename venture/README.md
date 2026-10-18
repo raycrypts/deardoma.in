@@ -38,13 +38,16 @@ domain and a mild case of forgetting, and finding out which one you
 are talking to is the whole product.
 
 the saas spine, in one line: one account, web app and cli, free
-discovery surfaces and flat-fee campaigns, datasets maintained
-through offline research passes and shipped like releases, and every
-surface scoped in code (dom never prices, donna never shows
-addresses before payment, reserved-mission endings refused by both).
+discovery surfaces and flat-fee, non-recurring campaigns, datasets
+maintained through offline research passes and shipped like releases,
+and every surface scoped in code (dom never prices, donna never shows
+addresses before payment, reserved-mission endings refused flat out
+by both).
 
 house rules: prose lowercase, no emojis, no em dashes, exact case
-preserved in identifiers and urls. pricing is flat-fee framing
-without exact rates until launch. the product is deardomain, the
+preserved in identifiers and urls. pricing is flat fee per attempt
+and on completion, never recurring, no subscription ever; exact
+rates stay unpublished until launch. impossible targets (.gov and
+friends) get a flat no with the reason, never a gate or an upsell. the product is deardomain, the
 broker agent is donna, the domainhack agent is dom; the copy never
 depends on the spelling of the address (donna-spec.md §1).

@@ -21,19 +21,25 @@ ready-made campaign.
 
 this is the long tail of domain decisions: hobbyists, side projects,
 micro-brands, where a $199-minimum broker or a $2,000 aftermarket
-listing is nonsense (root README.md). flat fee per attempt, flat fee
-on completion, no commission on the buying cost, so the product's
-only incentive is getting you the domain at the cheapest price
-possible. exact rates are set at launch. the discovery tools that
-lead into the paid service are free.
+listing is nonsense (root README.md). the broker's minimum fee is
+the market's entry barrier, and removing it is the point of the
+product: flat fee per attempt, flat fee on completion, no commission
+on the buying cost, so the product's only incentive is getting you
+the domain at the cheapest price possible. and nothing recurs.
+there is no subscription, no monthly charge, no seat, no upsell
+standing between you and the exit. you pay when you act, and only
+when you act. exact rates are set at launch. the discovery tools
+that lead into the paid service are free.
 
 ## a product, not a service
 
 everything about deardomain is a product surface, and that is the
 pricing model explained. there is no human you email, no intake call,
-no quote. you sign in, you use the web app or the cli, the same
-researched datasets underneath both, and every action is either free
-discovery or a flat-fee campaign. the product ships as a web app and
+no quote, and no subscription ticking in the background: the flat fee
+is the whole of what you pay, deliberately, because the product sells
+attempts, not memberships. you sign in, you use the web app or the
+cli, the same researched datasets underneath both, and every action is
+either free discovery or a flat-fee campaign. the product ships as a web app and
 a cli talking to two independent backends, dom and donna, each with
 its own stack, data and release cadence, fronted as one product (root
 README.md). when something changes in the world, a registry policy
@@ -49,8 +55,10 @@ registrar charges, and a registry-premium name gets the badge without
 a number (domainhacks branch SCOPE.md). donna never shows contact
 addresses before the buyer pays; she counts routes and gates on
 confidence. a reserved-mission ending (.gov, .mil, .edu, .int, .arpa)
-never appears in dom's results and donna's intake refuses it outright
-with the reason (src/core/reserved.ts on the donna branch). campaigns run as queued
+never appears in dom's results, and donna's intake doesn't gate it
+behind a tier or an appeal: she just says no, with the reason
+attached, the way a decent human would (src/core/reserved.ts on the
+donna branch). campaigns run as queued
 jobs, not conversations a person keeps in their head, and every
 state change writes a timestamped event you can read. this is what
 flat fees buy you: the product can afford to be disciplined because
@@ -61,9 +69,11 @@ nothing about it is hand-made.
 the acquisition industry treats every unused-domain owner as a
 professional squatter: the domainer with a portfolio, the
 priced-to-sell landing page, the leverage negotiation that drags for
-weeks. that assumption prices the whole industry, because you can't
-afford a human doing adversarial negotiation over a name worth less
-than the fee.
+weeks. that assumption sets the entry barrier the whole market is
+named after: a broker's time is expensive, so the minimum fee starts
+around $199 (root README.md) and everything below it, every
+micro-deal a normal person actually wants, has no market at all. the
+barrier isn't the sellers. it's the tollbooth.
 
 the assumption is also wrong for most of the market. the typical
 unused domain is held by a person with one name: the side project that

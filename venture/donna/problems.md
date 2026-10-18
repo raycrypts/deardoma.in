@@ -39,6 +39,12 @@ shown as what it is (donna-spec.md §5.3, §5.7). the pitch, the tone
 and the price are sized for the person, and the pro is handed back
 instead of played.
 
+and the fee that exists to break the barrier is flat and one-time:
+you pay for an attempt, and if nothing comes of it, nothing keeps
+charging you. no subscription, no retainer, no seat. the $199 broker
+and the monthly-billed toolkit both put a tollbooth on a $30
+decision; the flat fee is the tollbooth removed.
+
 ## i don't know what to offer
 
 offer $10 and you look unserious. offer $100 and you overpaid for a
